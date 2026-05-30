@@ -293,6 +293,35 @@
     content: '▾'; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
     color: var(--text3); pointer-events: none; font-size: 12px;
   }
+
+  /* ─── MEDICATION ─── */
+  .med-item {
+    border: 1px solid var(--border2); border-radius: var(--radius);
+    padding: 10px 12px; margin-bottom: 8px; background: var(--bg);
+    transition: border-color 0.15s;
+  }
+  .med-item.given { border-color: var(--teal); background: var(--teal-lt); }
+  .med-item.not-given { border-color: var(--gray-bd); opacity: 0.65; }
+  .med-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .med-name { font-size: 13px; font-weight: 600; flex: 1; color: var(--text); }
+  .med-name input { font-size: 13px; font-weight: 600; border: none; background: transparent;
+    color: var(--text); padding: 0; width: 100%; outline: none; }
+  .med-badge { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 20px; flex-shrink: 0; }
+  .med-badge.standard { background: var(--blue-lt); color: var(--blue-dk); }
+  .med-badge.prn { background: var(--amber-lt); color: var(--amber-dk); border: 1px solid var(--amber-bd); }
+  .med-badge.tambahan { background: var(--gray-lt); color: var(--gray); }
+  .med-toggle { display: flex; border-radius: 8px; overflow: hidden; border: 1px solid var(--border2); flex-shrink: 0; }
+  .med-toggle button {
+    padding: 5px 10px; border: none; font-size: 11px; font-weight: 600; cursor: pointer;
+    background: var(--bg2); color: var(--text2); transition: all 0.15s;
+  }
+  .med-toggle button.active-yes { background: var(--teal); color: #fff; }
+  .med-toggle button.active-no  { background: var(--gray-lt); color: var(--text2); }
+  .med-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .med-del { width: 28px; height: 28px; border-radius: 6px; border: none; flex-shrink: 0;
+    background: var(--red-lt); color: var(--red); cursor: pointer; font-size: 14px;
+    display: flex; align-items: center; justify-content: center; }
+  .med-note { font-size: 11px; color: var(--text3); margin-top: 4px; font-style: italic; }
 </style>
 </head>
 <body>
@@ -345,6 +374,12 @@
       <div class="field"><label>Heparin Loading (unit)</label><input id="rx-hep-l" type="number" placeholder="2000"/></div>
       <div class="field"><label>Heparin Hourly (unit)</label><input id="rx-hep-h" type="number" placeholder="1000"/></div>
     </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#7F4FBF"></span>Ubat-ubatan Semasa HD</div>
+    <div id="med-list"></div>
+    <button class="btn-add-row" onclick="addMedRow()">＋ Tambah ubat lain</button>
   </div>
 
   <div class="card">
@@ -428,6 +463,11 @@
       <div class="metric"><div class="metric-label">TFR</div><div class="metric-val" id="s-tfr">—</div><div class="metric-unit">kg</div></div>
     </div>
   </div>
+  <div class="card">
+    <div class="card-title">Ubat-ubatan Diberikan</div>
+    <div id="s-med-tbl"></div>
+  </div>
+
   <div class="card">
     <div class="card-title">Bacaan Intradialitik</div>
     <div style="overflow-x:auto"><div id="s-intra-tbl"></div></div>
@@ -627,6 +667,140 @@ function calcPost() {
   }
 }
 
+// ─── MEDICATION ───
+let mc = 0;
+
+const FIXED_MEDS = [
+  { id: 'med-recormon',  name: 'IV Recormon',  type: 'standard', note: 'Erythropoietin' },
+  { id: 'med-calcitriol',name: 'IV Calcitriol', type: 'standard', note: 'Vitamin D3 aktif' },
+  { id: 'med-iron',      name: 'IV Iron',       type: 'prn',      note: 'PRN — berikan jika perlu' },
+  { id: 'med-blank1',    name: '',              type: 'blank',    note: '' },
+  { id: 'med-blank2',    name: '',              type: 'blank',    note: '' },
+];
+
+function buildMedList() {
+  const c = g('med-list');
+  c.innerHTML = '';
+  FIXED_MEDS.forEach(m => {
+    c.appendChild(createMedCard(m.id, m.name, m.type, m.note, false));
+  });
+}
+
+function createMedCard(id, name, type, note, removable) {
+  const div = document.createElement('div');
+  div.className = 'med-item'; div.id = id;
+
+  const badgeLabel = type === 'prn' ? 'PRN' : type === 'tambahan' ? 'Tambahan' : type === 'blank' ? 'Ubat' : 'Standard';
+  const badgeClass = type === 'prn' ? 'prn' : type === 'tambahan' ? 'tambahan' : type === 'blank' ? 'tambahan' : 'standard';
+  const isBlank = (type === 'blank' || type === 'tambahan');
+
+  // Default route based on type
+  const defaultRoute = (type === 'standard' || type === 'prn') ? 'IV (Intravena)' : 'IV (Intravena)';
+
+  div.innerHTML = `
+    <div class="med-top">
+      ${isBlank
+        ? `<div class="med-name"><input id="${id}-name" type="text" placeholder="Nama ubat..." style="font-size:13px;font-weight:600;border:none;background:transparent;color:var(--text);padding:0;width:100%;outline:none"/></div>`
+        : `<div class="med-name">${name}</div>`}
+      <span class="med-badge ${badgeClass}">${badgeLabel}</span>
+      <div class="med-toggle">
+        <button id="${id}-yes" onclick="toggleMed('${id}','Ya')">Beri ✓</button>
+        <button id="${id}-no"  onclick="toggleMed('${id}','Tidak')" class="active-no">Tidak</button>
+      </div>
+      ${removable ? `<button class="med-del" onclick="delMedRow('${id}')">✕</button>` : ''}
+    </div>
+
+    <!-- DOS — sentiasa kelihatan -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px">
+      <div class="field">
+        <label>Dos / Kuantiti</label>
+        <input id="${id}-dos" type="text" placeholder="cth: 4000IU, 1mcg, 100mg"/>
+      </div>
+      <div class="field">
+        <label>Laluan (Route)</label>
+        <select id="${id}-route" style="height:40px;padding:0 10px;border:1px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);font-size:14px;-webkit-appearance:none;appearance:none">
+          <option>IV (Intravena)</option>
+          <option>SC (Subkutaneus)</option>
+          <option>IM (Intramuskular)</option>
+          <option>PO (Oral)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- MASA & CATATAN — hanya muncul selepas "Beri ✓" -->
+    <div id="${id}-extra" style="display:none;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px">
+      <div class="field">
+        <label>Masa diberikan</label>
+        <input id="${id}-masa" type="time"/>
+      </div>
+      <div class="field">
+        <label>Catatan</label>
+        <input id="${id}-nota" type="text" placeholder="..."/>
+      </div>
+    </div>
+
+    ${note ? `<div class="med-note" id="${id}-note" style="margin-top:5px">${note}</div>` : ''}`;
+
+  return div;
+}
+
+function toggleMed(id, val) {
+  const card   = g(id);
+  const extra  = g(id + '-extra');
+  const btnYes = g(id + '-yes');
+  const btnNo  = g(id + '-no');
+
+  if (val === 'Ya') {
+    card.className = 'med-item given';
+    btnYes.className = 'active-yes';
+    btnNo.className  = '';
+    if (extra) { extra.style.display = 'grid'; }
+    // Set masa automatik jika kosong
+    const masaEl = g(id + '-masa');
+    if (masaEl && !masaEl.value) {
+      const now = new Date();
+      masaEl.value = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+    }
+  } else {
+    card.className = 'med-item not-given';
+    btnYes.className = '';
+    btnNo.className  = 'active-no';
+    if (extra) { extra.style.display = 'none'; }
+  }
+}
+
+function addMedRow() {
+  mc++;
+  const id = 'med-custom-' + mc;
+  const card = createMedCard(id, '', 'tambahan', '', true);
+  g('med-list').appendChild(card);
+}
+
+function delMedRow(id) { const el = g(id); if (el) el.remove(); }
+
+function getMedPayload() {
+  const all = g('med-list').querySelectorAll('.med-item');
+  const result = [];
+  all.forEach(card => {
+    const id = card.id;
+    const btnYes = g(id + '-yes');
+    const given = btnYes && btnYes.className.includes('active-yes');
+    const nameEl = g(id + '-name');
+    const fixedMed = FIXED_MEDS.find(m => m.id === id);
+    const name = fixedMed ? fixedMed.name : (nameEl ? nameEl.value.trim() : '');
+    if (!name && !given) return; // skip blank kosong
+    result.push({
+      nama: name || '(ubat tidak dinamakan)',
+      status: given ? 'Diberikan' : 'Tidak diberikan',
+      dos:   given ? (gv(id + '-dos')   || '') : '',
+      masa:  given ? (gv(id + '-masa')  || '') : '',
+      route: given ? (g(id + '-route') ? g(id + '-route').value : '') : '',
+      nota:  given ? (gv(id + '-nota')  || '') : '',
+    });
+  });
+  return result;
+}
+
 // ─── INTRADIALYTIC ROWS ───
 function addIntraRow() {
   ic++;
@@ -665,6 +839,22 @@ function updSummary() {
   g('s-spo2').textContent    = gv('post-spo2') || '—';
   const pr = parseFloat(gv('pre-wt')), po = parseFloat(gv('post-wt'));
   g('s-tfr').textContent = (!isNaN(pr) && !isNaN(po)) ? (pr - po).toFixed(1) : '—';
+
+  // Ubat-ubatan
+  const meds = getMedPayload();
+  if (meds.length) {
+    let medRows = meds.map(m =>
+      `<tr>
+        <td style="font-weight:500">${m.nama}</td>
+        <td><span style="padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500;background:${m.status==='Diberikan'?'var(--teal-lt)':'var(--gray-lt)'};color:${m.status==='Diberikan'?'var(--teal)':'var(--text3)'}">${m.status}</span></td>
+        <td>${m.dos||'—'}</td>
+        <td>${m.masa||'—'}</td>
+        <td>${m.route||'—'}</td>
+      </tr>`).join('');
+    g('s-med-tbl').innerHTML = `<table class="sum-table"><thead><tr><th>Ubat</th><th>Status</th><th>Dos</th><th>Masa</th><th>Laluan</th></tr></thead><tbody>${medRows}</tbody></table>`;
+  } else {
+    g('s-med-tbl').innerHTML = '<p style="font-size:12px;color:var(--text3);padding:4px 0">Tiada rekod ubatan.</p>';
+  }
 
   let rows = '';
   for (let i = 1; i <= ic; i++) {
@@ -721,6 +911,7 @@ function getPayload() {
     ps_post: gv('post-ps'),
     tfr: gv('post-tfr'),
     idw_baki: gv('post-idw'),
+    ubatan: JSON.stringify(getMedPayload()),
     data_intra: JSON.stringify(intraArr)
   };
 }
@@ -795,6 +986,8 @@ function clearAll() {
   if (!confirm('Kosongkan semua data rekod ini? Tindakan ini tidak boleh dibuat alik.')) return;
   document.querySelectorAll('input:not(#gas-url):not(#hosp-name):not(#hosp-unit)').forEach(el => el.value = '');
   g('intra-rows').innerHTML = ''; ic = 0;
+  // Reset medication
+  buildMedList();
   buildAssessment();
   goPage('pre');
   showToast('ok', '🗑 Semua data rekod telah dikosongkan.');
@@ -825,6 +1018,7 @@ if ('serviceWorker' in navigator) {
 
 // ─── INIT ───
 buildAssessment();
+buildMedList();
 loadSettings();
 addIntraRow();
 
