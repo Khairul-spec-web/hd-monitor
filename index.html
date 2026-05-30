@@ -11,329 +11,157 @@
 <link rel="manifest" href="manifest.json"/>
 <link rel="apple-touch-icon" href="icon-192.png"/>
 <style>
-  :root {
-    --blue: #185FA5;
-    --blue-lt: #E6F1FB;
-    --blue-dk: #0C447C;
-    --green: #3B6D11;
-    --green-lt: #EAF3DE;
-    --green-dk: #27500A;
-    --teal: #0F6E56;
-    --teal-lt: #E1F5EE;
-    --red: #A32D2D;
-    --red-lt: #FCEBEB;
-    --red-bd: #F09595;
-    --amber-lt: #FAEEDA;
-    --amber-bd: #EF9F27;
-    --amber-dk: #633806;
-    --gray: #5F5E5A;
-    --gray-lt: #F1EFE8;
-    --gray-bd: #B4B2A9;
-    --text: #1a1a18;
-    --text2: #5F5E5A;
-    --text3: #888780;
-    --bg: #f5f4f0;
-    --bg2: #ffffff;
-    --border: rgba(0,0,0,0.12);
-    --border2: rgba(0,0,0,0.22);
-    --radius: 10px;
-    --radius-lg: 14px;
-    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+:root{
+  --blue:#185FA5;--blue-lt:#E6F1FB;--blue-dk:#0C447C;
+  --green:#3B6D11;--green-lt:#EAF3DE;--green-dk:#27500A;
+  --teal:#0F6E56;--teal-lt:#E1F5EE;
+  --red:#A32D2D;--red-lt:#FCEBEB;--red-bd:#F09595;
+  --amber-lt:#FAEEDA;--amber-bd:#EF9F27;--amber-dk:#633806;
+  --purple:#7F4FBF;--purple-lt:#F0EAF9;
+  --gray:#5F5E5A;--gray-lt:#F1EFE8;--gray-bd:#B4B2A9;
+  --text:#1a1a18;--text2:#5F5E5A;--text3:#888780;
+  --bg:#f5f4f0;--bg2:#ffffff;
+  --border:rgba(0,0,0,0.12);--border2:rgba(0,0,0,0.22);
+  --radius:10px;--radius-lg:14px;
+  --shadow:0 1px 3px rgba(0,0,0,0.08);
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --blue:#85B7EB;--blue-lt:#0C447C;--blue-dk:#B5D4F4;
+    --green:#97C459;--green-lt:#27500A;--green-dk:#C0DD97;
+    --teal:#5DCAA5;--teal-lt:#085041;
+    --red:#F09595;--red-lt:#501313;--red-bd:#A32D2D;
+    --amber-lt:#412402;--amber-bd:#BA7517;--amber-dk:#FAC775;
+    --purple:#C4A0F0;--purple-lt:#2D1A45;
+    --gray:#B4B2A9;--gray-lt:#2C2C2A;--gray-bd:#5F5E5A;
+    --text:#e8e6e0;--text2:#B4B2A9;--text3:#888780;
+    --bg:#1c1c1a;--bg2:#252523;
+    --border:rgba(255,255,255,0.10);--border2:rgba(255,255,255,0.20);
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --blue: #85B7EB;
-      --blue-lt: #0C447C;
-      --blue-dk: #B5D4F4;
-      --green: #97C459;
-      --green-lt: #27500A;
-      --green-dk: #C0DD97;
-      --teal: #5DCAA5;
-      --teal-lt: #085041;
-      --red: #F09595;
-      --red-lt: #501313;
-      --red-bd: #A32D2D;
-      --amber-lt: #412402;
-      --amber-bd: #BA7517;
-      --amber-dk: #FAC775;
-      --gray: #B4B2A9;
-      --gray-lt: #2C2C2A;
-      --gray-bd: #5F5E5A;
-      --text: #e8e6e0;
-      --text2: #B4B2A9;
-      --text3: #888780;
-      --bg: #1c1c1a;
-      --bg2: #252523;
-      --border: rgba(255,255,255,0.10);
-      --border2: rgba(255,255,255,0.20);
-    }
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-  html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); font-size: 15px; }
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);font-size:15px}
 
-  /* ─── TOP BAR ─── */
-  .topbar {
-    background: var(--blue);
-    color: #fff;
-    padding: env(safe-area-inset-top, 0) 0 0;
-    position: sticky; top: 0; z-index: 100;
-  }
-  .topbar-inner {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 12px 16px;
-  }
-  .topbar h1 { font-size: 16px; font-weight: 600; }
-  .topbar-sub { font-size: 11px; opacity: 0.75; margin-top: 1px; }
-  .topbar-actions { display: flex; gap: 6px; }
-  .icon-btn {
-    background: rgba(255,255,255,0.18); border: none; color: #fff;
-    width: 36px; height: 36px; border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; cursor: pointer;
-  }
+/* TOP BAR */
+.topbar{background:var(--blue);color:#fff;padding:env(safe-area-inset-top,0) 0 0;position:sticky;top:0;z-index:100}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+.topbar-sub{font-size:11px;opacity:.75;margin-top:1px}
+.topbar-actions{display:flex;gap:6px}
+.icon-btn{background:rgba(255,255,255,0.18);border:none;color:#fff;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer}
 
-  /* ─── BOTTOM NAV ─── */
-  .bottom-nav {
-    position: fixed; bottom: 0; left: 0; right: 0;
-    background: var(--bg2); border-top: 0.5px solid var(--border);
-    display: flex; padding-bottom: env(safe-area-inset-bottom, 0);
-    z-index: 100;
-  }
-  .nav-item {
-    flex: 1; display: flex; flex-direction: column; align-items: center;
-    padding: 8px 4px 6px; border: none; background: none; color: var(--text3);
-    font-size: 10px; cursor: pointer; gap: 3px; transition: color 0.15s;
-  }
-  .nav-item .icon { font-size: 22px; }
-  .nav-item.on { color: var(--blue); }
+/* BOTTOM NAV */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:.5px solid var(--border);display:flex;padding-bottom:env(safe-area-inset-bottom,0);z-index:100}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:8px 4px 6px;border:none;background:none;color:var(--text3);font-size:10px;cursor:pointer;gap:3px}
+.nav-item .icon{font-size:20px}
+.nav-item.on{color:var(--blue)}
 
-  /* ─── SCROLLABLE CONTENT ─── */
-  .content {
-    padding: 12px 12px 80px;
-    min-height: calc(100vh - 60px);
-  }
+/* CONTENT */
+.content{padding:12px 12px 88px;min-height:calc(100vh - 60px)}
 
-  /* ─── CARDS ─── */
-  .card {
-    background: var(--bg2); border-radius: var(--radius-lg);
-    border: 0.5px solid var(--border); padding: 14px;
-    margin-bottom: 10px; box-shadow: var(--shadow);
-  }
-  .card-title {
-    font-size: 12px; font-weight: 600; color: var(--text2);
-    text-transform: uppercase; letter-spacing: 0.05em;
-    margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
-  }
-  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .dot-pre  { background: var(--blue); }
-  .dot-intra{ background: var(--teal); }
-  .dot-post { background: #993C1D; }
-  .dot-set  { background: #534AB7; }
+/* CARD */
+.card{background:var(--bg2);border-radius:var(--radius-lg);border:.5px solid var(--border);padding:14px;margin-bottom:10px;box-shadow:var(--shadow)}
+.card-title{font-size:12px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-pre{background:var(--blue)}.dot-base{background:var(--teal)}.dot-intra{background:#0F6E56}.dot-post{background:#993C1D}.dot-med{background:var(--purple)}
 
-  /* ─── FORM FIELDS ─── */
-  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .grid1 { display: grid; grid-template-columns: 1fr; gap: 8px; }
-  .field { display: flex; flex-direction: column; gap: 4px; }
-  .field label { font-size: 11px; color: var(--text2); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
-  .field input, .field select {
-    height: 40px; padding: 0 10px;
-    border: 1px solid var(--border2); border-radius: var(--radius);
-    background: var(--bg); color: var(--text); font-size: 14px;
-    -webkit-appearance: none; appearance: none;
-    transition: border-color 0.15s;
-  }
-  .field input:focus, .field select:focus {
-    outline: none; border-color: var(--blue);
-    box-shadow: 0 0 0 3px rgba(24,95,165,0.15);
-  }
-  .field input[readonly] { background: var(--gray-lt); color: var(--text2); }
+/* SECTION LABEL inside card */
+.sec-lbl{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;padding:6px 0 8px;border-bottom:.5px solid var(--border);margin-bottom:10px;display:flex;align-items:center;gap:6px}
 
-  /* ─── RADIO ROWS ─── */
-  .radio-row {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 9px 0; border-bottom: 0.5px solid var(--border);
-    font-size: 13px;
-  }
-  .radio-row:last-child { border-bottom: none; padding-bottom: 0; }
-  .radio-row label { color: var(--text2); }
-  .radio-opts { display: flex; gap: 4px; }
-  .radio-pill {
-    padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 500;
-    border: 1px solid var(--border2); background: var(--bg); color: var(--text2);
-    cursor: pointer; transition: all 0.15s;
-  }
-  .radio-pill.selected-yes { background: var(--red-lt); border-color: var(--red); color: var(--red); }
-  .radio-pill.selected-no  { background: var(--green-lt); border-color: var(--green); color: var(--green); }
-  .radio-pill.selected-biasa { background: var(--green-lt); border-color: var(--green); color: var(--green); }
-  .radio-pill.selected-other { background: var(--blue-lt); border-color: var(--blue); color: var(--blue-dk); }
+/* FORM */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.field{display:flex;flex-direction:column;gap:4px}
+.field label{font-size:11px;color:var(--text2);font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+.field input,.field select{height:40px;padding:0 10px;border:1px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);font-size:14px;-webkit-appearance:none;appearance:none;transition:border-color .15s}
+.field input:focus,.field select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,95,165,.15)}
+.field input[readonly]{background:var(--gray-lt);color:var(--text2)}
+.sel-wrap{position:relative}.sel-wrap select{width:100%;padding-right:30px}
+.sel-wrap::after{content:'▾';position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text3);pointer-events:none;font-size:12px}
 
-  /* ─── ALERTS ─── */
-  .alert {
-    display: none; align-items: center; gap: 8px; margin-top: 6px;
-    padding: 8px 10px; border-radius: var(--radius);
-    background: var(--red-lt); border: 1px solid var(--red-bd);
-    color: var(--red); font-size: 12px; line-height: 1.4;
-  }
-  .alert.show { display: flex; }
-  .alert-icon { font-size: 16px; flex-shrink: 0; }
+/* RADIO */
+.radio-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:.5px solid var(--border);font-size:13px}
+.radio-row:last-child{border-bottom:none;padding-bottom:0}
+.radio-row label{color:var(--text2)}
+.radio-opts{display:flex;gap:4px}
+.radio-pill{padding:4px 10px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid var(--border2);background:var(--bg);color:var(--text2);cursor:pointer;transition:all .15s}
+.radio-pill.sel-ya{background:var(--red-lt);border-color:var(--red);color:var(--red)}
+.radio-pill.sel-no{background:var(--green-lt);border-color:var(--green);color:var(--green)}
+.radio-pill.sel-oth{background:var(--blue-lt);border-color:var(--blue);color:var(--blue-dk)}
 
-  /* ─── METRIC CARDS ─── */
-  .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .metric {
-    background: var(--gray-lt); border-radius: var(--radius);
-    padding: 10px 12px;
-  }
-  .metric-label { font-size: 11px; color: var(--text2); margin-bottom: 2px; }
-  .metric-val { font-size: 20px; font-weight: 600; color: var(--text); }
-  .metric-unit { font-size: 11px; color: var(--text3); margin-top: 1px; }
+/* ALERT */
+.alert{display:none;align-items:center;gap:8px;margin-top:6px;padding:8px 10px;border-radius:var(--radius);background:var(--red-lt);border:1px solid var(--red-bd);color:var(--red);font-size:12px;line-height:1.4}
+.alert.show{display:flex}
 
-  /* ─── INTRA CARDS ─── */
-  .intra-card {
-    border: 1px solid var(--border2); border-radius: var(--radius);
-    padding: 12px; margin-bottom: 8px; background: var(--bg);
-  }
-  .intra-hd {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  .intra-hd-lbl { font-size: 13px; font-weight: 600; color: var(--teal); }
-  .del-btn {
-    width: 28px; height: 28px; border-radius: 6px; border: none;
-    background: var(--red-lt); color: var(--red); cursor: pointer;
-    display: flex; align-items: center; justify-content: center; font-size: 14px;
-  }
+/* METRIC */
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.metric{background:var(--gray-lt);border-radius:var(--radius);padding:10px 12px}
+.metric-label{font-size:11px;color:var(--text2);margin-bottom:2px}
+.metric-val{font-size:20px;font-weight:600}
+.metric-unit{font-size:11px;color:var(--text3);margin-top:1px}
 
-  /* ─── BUTTONS ─── */
-  .btn-add-row {
-    width: 100%; padding: 11px; border-radius: var(--radius);
-    border: 1.5px dashed var(--border2); background: none; color: var(--text2);
-    font-size: 13px; cursor: pointer; display: flex; align-items: center;
-    justify-content: center; gap: 6px; margin-top: 4px;
-  }
-  .btn-add-row:active { background: var(--gray-lt); }
-  .btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
-  .btn {
-    flex: 1; min-width: 80px; padding: 12px 8px; border-radius: var(--radius);
-    font-size: 13px; font-weight: 600; border: none; cursor: pointer;
-    display: flex; align-items: center; justify-content: center; gap: 5px;
-    -webkit-appearance: none;
-  }
-  .btn-primary { background: var(--blue); color: #fff; }
-  .btn-primary:active { background: var(--blue-dk); }
-  .btn-green { background: var(--green); color: #fff; }
-  .btn-green:active { background: var(--green-dk); }
-  .btn-outline { background: var(--bg2); border: 1px solid var(--border2); color: var(--text); }
-  .btn-outline:active { background: var(--gray-lt); }
-  .btn-danger { background: var(--red-lt); border: 1px solid var(--red-bd); color: var(--red); }
+/* INTRA */
+.intra-card{border:1px solid var(--border2);border-radius:var(--radius);padding:12px;margin-bottom:8px;background:var(--bg)}
+.intra-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.intra-hd-lbl{font-size:13px;font-weight:600;color:var(--teal)}
+.del-btn{width:28px;height:28px;border-radius:6px;border:none;background:var(--red-lt);color:var(--red);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px}
 
-  /* ─── TOAST ─── */
-  .toast {
-    position: fixed; bottom: 72px; left: 12px; right: 12px;
-    padding: 12px 14px; border-radius: var(--radius-lg); font-size: 13px;
-    display: flex; align-items: center; gap: 8px; z-index: 200;
-    transform: translateY(20px); opacity: 0; transition: all 0.25s;
-    pointer-events: none;
-  }
-  .toast.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
-  .toast-ok { background: var(--green-lt); border: 1px solid var(--green); color: var(--green-dk); }
-  .toast-err { background: var(--red-lt); border: 1px solid var(--red-bd); color: var(--red); }
-  .toast-info { background: var(--blue-lt); border: 1px solid var(--blue); color: var(--blue-dk); }
+/* BUTTONS */
+.btn-add-row{width:100%;padding:11px;border-radius:var(--radius);border:1.5px dashed var(--border2);background:none;color:var(--text2);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px}
+.btn-add-row:active{background:var(--gray-lt)}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.btn{flex:1;min-width:80px;padding:12px 8px;border-radius:var(--radius);font-size:13px;font-weight:600;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;-webkit-appearance:none}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:active{background:var(--blue-dk)}
+.btn-green{background:var(--green);color:#fff}
+.btn-green:active{background:var(--green-dk)}
+.btn-outline{background:var(--bg2);border:1px solid var(--border2);color:var(--text)}
+.btn-outline:active{background:var(--gray-lt)}
+.btn-danger{background:var(--red-lt);border:1px solid var(--red-bd);color:var(--red)}
 
-  /* ─── SETUP STEPS ─── */
-  .step { display: flex; gap: 10px; margin-bottom: 14px; align-items: flex-start; }
-  .step-num {
-    min-width: 24px; height: 24px; border-radius: 50%; background: var(--blue);
-    color: #fff; font-size: 12px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  }
-  .step-body { font-size: 13px; line-height: 1.6; color: var(--text); }
-  .step-body strong { color: var(--text); font-weight: 600; }
-  .code-block {
-    background: var(--gray-lt); border: 1px solid var(--border2);
-    border-radius: var(--radius); padding: 10px 12px;
-    font-family: 'SFMono-Regular', 'Consolas', monospace; font-size: 11px;
-    color: var(--text2); overflow-x: auto; white-space: pre; line-height: 1.7;
-    margin-top: 6px;
-  }
-  .copy-btn {
-    width: 100%; padding: 8px; border-radius: var(--radius);
-    background: var(--blue-lt); border: 1px solid var(--blue);
-    color: var(--blue-dk); font-size: 12px; font-weight: 600; cursor: pointer;
-    margin-top: 6px;
-  }
+/* MEDICATION */
+.med-item{border:1px solid var(--border2);border-radius:var(--radius);padding:10px 12px;margin-bottom:8px;background:var(--bg);transition:border-color .15s}
+.med-item.given{border-color:var(--teal);background:var(--teal-lt)}
+.med-item.not-given{border-color:var(--gray-bd);opacity:.65}
+.med-top{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.med-name{font-size:13px;font-weight:600;flex:1;color:var(--text)}
+.med-name input{font-size:13px;font-weight:600;border:none;background:transparent;color:var(--text);padding:0;width:100%;outline:none}
+.med-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;flex-shrink:0}
+.med-badge.standard{background:var(--blue-lt);color:var(--blue-dk)}
+.med-badge.prn{background:var(--amber-lt);color:var(--amber-dk);border:1px solid var(--amber-bd)}
+.med-badge.tambahan{background:var(--gray-lt);color:var(--gray)}
+.med-toggle{display:flex;border-radius:8px;overflow:hidden;border:1px solid var(--border2);flex-shrink:0}
+.med-toggle button{padding:5px 10px;border:none;font-size:11px;font-weight:600;cursor:pointer;background:var(--bg2);color:var(--text2);transition:all .15s}
+.med-toggle button.active-yes{background:var(--teal);color:#fff}
+.med-toggle button.active-no{background:var(--gray-lt);color:var(--text2)}
+.med-del{width:28px;height:28px;border-radius:6px;border:none;flex-shrink:0;background:var(--red-lt);color:var(--red);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center}
+.med-note{font-size:11px;color:var(--text3);margin-top:4px;font-style:italic}
 
-  /* ─── SUMMARY TABLE ─── */
-  .sum-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  .sum-table th { background: var(--gray-lt); padding: 6px 8px; text-align: left; font-size: 11px; color: var(--text2); font-weight: 600; }
-  .sum-table td { padding: 6px 8px; border-top: 0.5px solid var(--border); color: var(--text); }
+/* TOAST */
+.toast{position:fixed;bottom:72px;left:12px;right:12px;padding:12px 14px;border-radius:var(--radius-lg);font-size:13px;display:flex;align-items:center;gap:8px;z-index:200;transform:translateY(20px);opacity:0;transition:all .25s;pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1;pointer-events:auto}
+.toast-ok{background:var(--green-lt);border:1px solid var(--green);color:var(--green-dk)}
+.toast-err{background:var(--red-lt);border:1px solid var(--red-bd);color:var(--red)}
+.toast-info{background:var(--blue-lt);border:1px solid var(--blue);color:var(--blue-dk)}
 
-  /* ─── HEADER INFO ─── */
-  .info-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
-  .info-chip {
-    background: var(--gray-lt); border-radius: 20px; padding: 3px 10px;
-    font-size: 11px; color: var(--text2); border: 0.5px solid var(--border2);
-  }
-  .info-chip.filled { background: var(--blue-lt); color: var(--blue-dk); border-color: var(--blue); }
+/* OFFLINE */
+.offline-bar{display:none;background:var(--amber-lt);border-bottom:1px solid var(--amber-bd);padding:6px 16px;font-size:12px;color:var(--amber-dk);align-items:center;gap:6px}
+.offline-bar.show{display:flex}
 
-  /* ─── OFFLINE BANNER ─── */
-  .offline-bar {
-    display: none; background: var(--amber-lt); border-bottom: 1px solid var(--amber-bd);
-    padding: 6px 16px; font-size: 12px; color: var(--amber-dk);
-    align-items: center; gap: 6px;
-  }
-  .offline-bar.show { display: flex; }
-
-  /* ─── SECTION DIVIDER ─── */
-  hr.div { border: none; border-top: 0.5px solid var(--border); margin: 12px 0; }
-
-  /* ─── SELECT ARROW ─── */
-  .sel-wrap { position: relative; }
-  .sel-wrap select { width: 100%; padding-right: 30px; }
-  .sel-wrap::after {
-    content: '▾'; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
-    color: var(--text3); pointer-events: none; font-size: 12px;
-  }
-
-  /* ─── MEDICATION ─── */
-  .med-item {
-    border: 1px solid var(--border2); border-radius: var(--radius);
-    padding: 10px 12px; margin-bottom: 8px; background: var(--bg);
-    transition: border-color 0.15s;
-  }
-  .med-item.given { border-color: var(--teal); background: var(--teal-lt); }
-  .med-item.not-given { border-color: var(--gray-bd); opacity: 0.65; }
-  .med-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-  .med-name { font-size: 13px; font-weight: 600; flex: 1; color: var(--text); }
-  .med-name input { font-size: 13px; font-weight: 600; border: none; background: transparent;
-    color: var(--text); padding: 0; width: 100%; outline: none; }
-  .med-badge { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 20px; flex-shrink: 0; }
-  .med-badge.standard { background: var(--blue-lt); color: var(--blue-dk); }
-  .med-badge.prn { background: var(--amber-lt); color: var(--amber-dk); border: 1px solid var(--amber-bd); }
-  .med-badge.tambahan { background: var(--gray-lt); color: var(--gray); }
-  .med-toggle { display: flex; border-radius: 8px; overflow: hidden; border: 1px solid var(--border2); flex-shrink: 0; }
-  .med-toggle button {
-    padding: 5px 10px; border: none; font-size: 11px; font-weight: 600; cursor: pointer;
-    background: var(--bg2); color: var(--text2); transition: all 0.15s;
-  }
-  .med-toggle button.active-yes { background: var(--teal); color: #fff; }
-  .med-toggle button.active-no  { background: var(--gray-lt); color: var(--text2); }
-  .med-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-  .med-del { width: 28px; height: 28px; border-radius: 6px; border: none; flex-shrink: 0;
-    background: var(--red-lt); color: var(--red); cursor: pointer; font-size: 14px;
-    display: flex; align-items: center; justify-content: center; }
-  .med-note { font-size: 11px; color: var(--text3); margin-top: 4px; font-style: italic; }
+/* SUMMARY TABLE */
+.sum-table{width:100%;border-collapse:collapse;font-size:12px}
+.sum-table th{background:var(--gray-lt);padding:6px 8px;text-align:left;font-size:11px;color:var(--text2);font-weight:600}
+.sum-table td{padding:6px 8px;border-top:.5px solid var(--border);color:var(--text)}
+hr.div{border:none;border-top:.5px solid var(--border);margin:12px 0}
 </style>
 </head>
 <body>
 
-<!-- OFFLINE BANNER -->
 <div class="offline-bar" id="offline-bar">⚠ Tiada sambungan internet — mod luar talian</div>
 
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="topbar-inner">
     <div>
-      <div class="topbar h1" style="font-size:16px;font-weight:600;color:#fff">HD Monitor</div>
+      <div style="font-size:16px;font-weight:600;color:#fff">HD Monitor</div>
       <div class="topbar-sub">Hospital Tambunan • KKM</div>
     </div>
     <div class="topbar-actions">
@@ -343,9 +171,12 @@
   </div>
 </div>
 
-<!-- CONTENT PAGES -->
+<!-- ══════════════════════════════════════════════
+     PAGE: PRE HD
+══════════════════════════════════════════════ -->
 <div class="content" id="page-pre">
 
+  <!-- Maklumat Pesakit -->
   <div class="card">
     <div class="card-title">Maklumat Pesakit &amp; Sesi</div>
     <div class="grid2">
@@ -364,6 +195,7 @@
     </div>
   </div>
 
+  <!-- Preskripsi -->
   <div class="card">
     <div class="card-title"><span class="dot dot-pre"></span>Preskripsi HD</div>
     <div class="grid2">
@@ -376,42 +208,57 @@
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-title"><span class="dot" style="background:#7F4FBF"></span>Ubat-ubatan Semasa HD</div>
-    <div id="med-list"></div>
-    <button class="btn-add-row" onclick="addMedRow()">＋ Tambah ubat lain</button>
-  </div>
-
+  <!-- Penilaian Pra-HD -->
   <div class="card">
     <div class="card-title"><span class="dot dot-pre"></span>Penilaian Pra-HD</div>
     <div class="grid2" style="margin-bottom:10px">
       <div class="field"><label>Penampilan Am</label><input id="pre-ga" type="text" placeholder="..."/></div>
       <div class="field"><label>Fistula</label><input id="pre-fist" type="text" placeholder="..."/></div>
     </div>
-    <div id="assessment-rows">
-      <!-- Generated by JS -->
-    </div>
+    <div id="assessment-rows"></div>
   </div>
 
+  <!-- Tanda Vital PERTAMA — Sebelum HD -->
   <div class="card">
-    <div class="card-title"><span class="dot dot-pre"></span>Tanda Vital PRE HD</div>
+    <div class="card-title"><span class="dot dot-pre"></span>Tanda Vital PERTAMA — Sebelum HD Bermula</div>
     <div class="grid2">
-      <div class="field"><label>B/P Duduk (mmHg)</label><input id="pre-bp" type="text" placeholder="120/80" oninput="ckBP(this,'al-pre-bp')"/></div>
-      <div class="field"><label>Nadi (/min)</label><input id="pre-hr" type="number" placeholder="70" oninput="ckHR(this,'al-pre-hr')"/></div>
+      <div class="field"><label>B/P Duduk (mmHg)</label><input id="tv1-bp" type="text" placeholder="120/80" oninput="ckBP(this,'al-tv1-bp')"/></div>
+      <div class="field"><label>Nadi (/min)</label><input id="tv1-hr" type="number" placeholder="70" oninput="ckHR(this,'al-tv1-hr')"/></div>
       <div class="field"><label>Berat Pre (kg)</label><input id="pre-wt" type="number" step="0.1" placeholder="62.5" oninput="calcIDW()"/></div>
-      <div class="field"><label>Suhu (°C)</label><input id="pre-tmp" type="number" step="0.1" placeholder="36.5"/></div>
-      <div class="field"><label>SpO₂ (%)</label><input id="pre-spo2" type="number" placeholder="98" oninput="ckSpo2(this,'al-pre-spo2')"/></div>
-      <div class="field"><label>P/S (/10)</label><input id="pre-ps" type="number" min="0" max="10" placeholder="—"/></div>
+      <div class="field"><label>Suhu (°C)</label><input id="tv1-tmp" type="number" step="0.1" placeholder="36.5"/></div>
+      <div class="field"><label>SpO₂ (%)</label><input id="tv1-spo2" type="number" placeholder="98" oninput="ckSpo2(this,'al-tv1-spo2')"/></div>
+      <div class="field"><label>P/S (/10)</label><input id="tv1-ps" type="number" min="0" max="10" placeholder="—"/></div>
       <div class="field"><label>IDW (auto, kg)</label><input id="pre-idw" type="text" readonly placeholder="auto"/></div>
-      <div class="field"><label>B/P Berdiri (mmHg)</label><input id="pre-bp-st" type="text" placeholder="—"/></div>
+      <div class="field"><label>B/P Berdiri (mmHg)</label><input id="tv1-bp-st" type="text" placeholder="—"/></div>
     </div>
-    <div id="al-pre-bp" class="alert"><span class="alert-icon">⚠</span><span></span></div>
-    <div id="al-pre-hr" class="alert"><span class="alert-icon">⚠</span><span></span></div>
-    <div id="al-pre-spo2" class="alert"><span class="alert-icon">⚠</span><span></span></div>
+    <div id="al-tv1-bp" class="alert"><span>⚠</span><span></span></div>
+    <div id="al-tv1-hr" class="alert"><span>⚠</span><span></span></div>
+    <div id="al-tv1-spo2" class="alert"><span>⚠</span><span></span></div>
+  </div>
+
+  <!-- Tanda Vital BASELINE — Selepas Sambung -->
+  <div class="card">
+    <div class="card-title"><span class="dot dot-base"></span>Tanda Vital BASELINE — Selepas Sambung Pesakit</div>
+    <div class="grid2">
+      <div class="field"><label>B/P Duduk (mmHg)</label><input id="tv2-bp" type="text" placeholder="120/80" oninput="ckBP(this,'al-tv2-bp')"/></div>
+      <div class="field"><label>Nadi (/min)</label><input id="tv2-hr" type="number" placeholder="70" oninput="ckHR(this,'al-tv2-hr')"/></div>
+      <div class="field"><label>Suhu (°C)</label><input id="tv2-tmp" type="number" step="0.1" placeholder="36.5"/></div>
+      <div class="field"><label>SpO₂ (%)</label><input id="tv2-spo2" type="number" placeholder="98" oninput="ckSpo2(this,'al-tv2-spo2')"/></div>
+      <div class="field"><label>P/S (/10)</label><input id="tv2-ps" type="number" min="0" max="10" placeholder="—"/></div>
+      <div class="field"><label>VP Awal (mmHg)</label><input id="tv2-vp" type="number" placeholder="—"/></div>
+      <div class="field"><label>Qb Awal (ml/min)</label><input id="tv2-qb" type="number" placeholder="250"/></div>
+      <div class="field"><label>B/P Berdiri (mmHg)</label><input id="tv2-bp-st" type="text" placeholder="—"/></div>
+    </div>
+    <div id="al-tv2-bp" class="alert"><span>⚠</span><span></span></div>
+    <div id="al-tv2-hr" class="alert"><span>⚠</span><span></span></div>
+    <div id="al-tv2-spo2" class="alert"><span>⚠</span><span></span></div>
   </div>
 
 </div><!-- /page-pre -->
 
+<!-- ══════════════════════════════════════════════
+     PAGE: INTRA
+══════════════════════════════════════════════ -->
 <div class="content" id="page-intra" style="display:none">
   <div class="card">
     <div class="card-title"><span class="dot dot-intra"></span>Pemerhatian Intradialitik (setiap 2 jam)</div>
@@ -420,7 +267,12 @@
   </div>
 </div>
 
+<!-- ══════════════════════════════════════════════
+     PAGE: POST HD
+══════════════════════════════════════════════ -->
 <div class="content" id="page-post" style="display:none">
+
+  <!-- Tanda Vital Post HD -->
   <div class="card">
     <div class="card-title"><span class="dot dot-post"></span>Tanda Vital POST HD</div>
     <div class="grid2">
@@ -433,9 +285,11 @@
       <div class="field"><label>TFR sebenar (auto, kg)</label><input id="post-tfr" type="text" readonly placeholder="auto"/></div>
       <div class="field"><label>IDW baki (auto, kg)</label><input id="post-idw" type="text" readonly placeholder="auto"/></div>
     </div>
-    <div id="al-post-bp" class="alert"><span class="alert-icon">⚠</span><span></span></div>
-    <div id="al-post-spo2" class="alert"><span class="alert-icon">⚠</span><span></span></div>
+    <div id="al-post-bp" class="alert"><span>⚠</span><span></span></div>
+    <div id="al-post-spo2" class="alert"><span>⚠</span><span></span></div>
   </div>
+
+  <!-- Ringkasan Cecair -->
   <div class="card">
     <div class="card-title">Ringkasan Cecair</div>
     <div class="metric-grid">
@@ -445,29 +299,46 @@
       <div class="metric"><div class="metric-label">IDW baki</div><div class="metric-val" id="disp-idwb">—</div><div class="metric-unit">kg</div></div>
     </div>
   </div>
+
+  <!-- UBAT-UBATAN — di Post HD -->
+  <div class="card">
+    <div class="card-title"><span class="dot dot-med"></span>Ubat-ubatan Semasa HD</div>
+    <div id="med-list"></div>
+    <button class="btn-add-row" onclick="addMedRow()">＋ Tambah ubat lain</button>
+  </div>
+
   <div class="btn-row">
     <button class="btn btn-green" onclick="sendSheets()">📊 Hantar ke Google Sheets</button>
     <button class="btn btn-outline" onclick="exportCSV()">⬇ Eksport CSV</button>
   </div>
-</div>
 
+</div><!-- /page-post -->
+
+<!-- ══════════════════════════════════════════════
+     PAGE: RINGKASAN
+══════════════════════════════════════════════ -->
 <div class="content" id="page-summary" style="display:none">
   <div class="card">
-    <div class="card-title">Perbandingan Pre vs Post</div>
-    <div class="metric-grid">
-      <div class="metric"><div class="metric-label">B/P Pre</div><div class="metric-val" id="s-bp-pre" style="font-size:15px">—</div></div>
-      <div class="metric"><div class="metric-label">B/P Post</div><div class="metric-val" id="s-bp-post" style="font-size:15px">—</div></div>
-      <div class="metric"><div class="metric-label">Nadi Pre</div><div class="metric-val" id="s-hr-pre">—</div><div class="metric-unit">/min</div></div>
-      <div class="metric"><div class="metric-label">Nadi Post</div><div class="metric-val" id="s-hr-post">—</div><div class="metric-unit">/min</div></div>
-      <div class="metric"><div class="metric-label">SpO₂ Post</div><div class="metric-val" id="s-spo2">—</div><div class="metric-unit">%</div></div>
+    <div class="card-title">Perbandingan Tanda Vital</div>
+    <div style="overflow-x:auto;margin-bottom:4px">
+      <table class="sum-table">
+        <thead><tr><th>Fasa</th><th>B/P</th><th>Nadi</th><th>Suhu</th><th>SpO₂</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600;color:var(--blue)">Pertama</td><td id="s-tv1-bp">—</td><td id="s-tv1-hr">—</td><td id="s-tv1-tmp">—</td><td id="s-tv1-spo2">—</td></tr>
+          <tr><td style="font-weight:600;color:var(--teal)">Baseline</td><td id="s-tv2-bp">—</td><td id="s-tv2-hr">—</td><td id="s-tv2-tmp">—</td><td id="s-tv2-spo2">—</td></tr>
+          <tr><td style="font-weight:600;color:#993C1D">Post HD</td><td id="s-post-bp">—</td><td id="s-post-hr">—</td><td id="s-post-tmp">—</td><td id="s-post-spo2">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="metric-grid" style="margin-top:8px">
       <div class="metric"><div class="metric-label">TFR</div><div class="metric-val" id="s-tfr">—</div><div class="metric-unit">kg</div></div>
+      <div class="metric"><div class="metric-label">IDW baki</div><div class="metric-val" id="s-idwb">—</div><div class="metric-unit">kg</div></div>
     </div>
   </div>
   <div class="card">
     <div class="card-title">Ubat-ubatan Diberikan</div>
     <div id="s-med-tbl"></div>
   </div>
-
   <div class="card">
     <div class="card-title">Bacaan Intradialitik</div>
     <div style="overflow-x:auto"><div id="s-intra-tbl"></div></div>
@@ -479,339 +350,146 @@
       <button class="btn btn-outline" onclick="exportCSV()">⬇ CSV</button>
     </div>
     <hr class="div"/>
-    <button class="btn btn-danger" style="width:100%;margin-top:0" onclick="clearAll()">🗑 Kosongkan Semua Data</button>
+    <button class="btn btn-danger" style="width:100%" onclick="clearAll()">🗑 Kosongkan Semua Data</button>
   </div>
 </div>
 
-<div class="content" id="page-settings" style="display:none">
-  <div class="card">
-    <div class="card-title"><span class="dot dot-set"></span>Sambungan Google Sheets</div>
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-body">Buka fail <strong>Code.gs</strong> yang disertakan (atau lihat kod di bawah). Salin keseluruhan kod tersebut.</div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-body">Buka <strong>Google Sheets</strong> → buat spreadsheet baru → klik <strong>Extensions → Apps Script</strong>. Padam kod sedia ada, tampal kod baharu. Klik ikon <strong>💾 Save</strong>.</div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-body">Klik <strong>Deploy → New deployment</strong>. Pilih jenis <em>Web App</em>. Tetapkan <em>Execute as: Me</em> dan <em>Who has access: Anyone</em>. Klik <strong>Deploy</strong> dan <strong>Authorize</strong>.</div>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <div class="step-body">Salin <strong>Web App URL</strong> yang dipaparkan (bermula dengan <code>https://script.google.com/macros/s/...</code>), tampal di bawah:</div>
-    </div>
-    <div class="field" style="margin:10px 0">
-      <label>URL Google Apps Script</label>
-      <input id="gas-url" type="url" placeholder="https://script.google.com/macros/s/..." oninput="saveGasUrl()"/>
-    </div>
-    <button class="btn btn-primary" style="width:100%" onclick="testConn()">🔌 Uji Sambungan</button>
-  </div>
-  <div class="card">
-    <div class="card-title">Lajur Google Sheets</div>
-    <div style="font-size:12px;color:var(--text2);line-height:1.8">
-      Apps Script akan mencipta lajur-lajur ini secara automatik pada baris pertama:<br/>
-      <strong>Tarikh · Masa · Nama · No.Pesakit · Syif · Staff · BP_Pre · HR_Pre · Wt_Pre · Tmp_Pre · SpO2_Pre · IDW · BP_Post · HR_Post · Wt_Post · TFR · IDW_Baki · SpO2_Post · Preskripsi · Penilaian · Data_Intra</strong>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-title">Maklumat Hos</div>
-    <div class="grid2">
-      <div class="field"><label>Nama Hospital</label><input id="hosp-name" type="text" value="Hospital Tambunan" oninput="saveHospName()"/></div>
-      <div class="field"><label>Unit / Wad</label><input id="hosp-unit" type="text" value="Unit Hemodialisis" oninput="saveHospUnit()"/></div>
-    </div>
-  </div>
-</div><!-- /page-settings -->
-
 <!-- BOTTOM NAV -->
 <nav class="bottom-nav">
-  <button class="nav-item on" id="nav-pre" onclick="goPage('pre')">
-    <span class="icon">🩺</span><span>Pre HD</span>
-  </button>
-  <button class="nav-item" id="nav-intra" onclick="goPage('intra')">
-    <span class="icon">⏱</span><span>Intra</span>
-  </button>
-  <button class="nav-item" id="nav-post" onclick="goPage('post')">
-    <span class="icon">✅</span><span>Post HD</span>
-  </button>
-  <button class="nav-item" id="nav-summary" onclick="goPage('summary')">
-    <span class="icon">📋</span><span>Ringkasan</span>
-  </button>
-  <button class="nav-item" id="nav-settings" onclick="goPage('settings')">
-    <span class="icon">⚙️</span><span>Tetapan</span>
-  </button>
+  <button class="nav-item on" id="nav-pre"     onclick="goPage('pre')">    <span class="icon">🩺</span><span>Pre HD</span></button>
+  <button class="nav-item"    id="nav-intra"   onclick="goPage('intra')">  <span class="icon">⏱</span><span>Intra</span></button>
+  <button class="nav-item"    id="nav-post"    onclick="goPage('post')">   <span class="icon">✅</span><span>Post HD</span></button>
+  <button class="nav-item"    id="nav-summary" onclick="goPage('summary')"><span class="icon">📋</span><span>Ringkasan</span></button>
 </nav>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
-// ─── STATE ───
-let ic = 0;
-const S = {};
-const pages = ['pre','intra','post','summary','settings'];
+// ─── HARDCODED APPS SCRIPT URL ───────────────────────────────────
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbzAzBc9Vfdf5uI_GgmGNQ3YY0iZFctSy2XzbVoOZGZuaV9HfAUuoiB7voOVePPo_W6J/exec';
 
-// ─── ASSESSMENT CONFIG ───
+// ─── STATE ───────────────────────────────────────────────────────
+let ic = 0, mc = 0;
+const pages = ['pre','intra','post','summary'];
+
+// ─── ASSESSMENT ──────────────────────────────────────────────────
+const S = {};
 const assessItems = [
-  { key:'fl', label:'Lebihan Cecair', opts:['Ya','Tidak'], dflt:'Tidak' },
-  { key:'dy', label:'Sesak Nafas (Dyspnoea)', opts:['Ya','Tidak'], dflt:'Tidak' },
-  { key:'oe', label:'Edema', opts:['Ya','Tidak'], dflt:'Tidak' },
-  { key:'in', label:'Radang (Inflamation)', opts:['Ya','Tidak'], dflt:'Tidak' },
-  { key:'hm', label:'Hematoma', opts:['Ya','Tidak'], dflt:'Tidak' },
-  { key:'th', label:'Thrill', opts:['Biasa','Tidak Biasa'], dflt:'Biasa' },
-  { key:'ef', label:'Toleransi Usaha', opts:['Baik','Sederhana','Lemah'], dflt:'Baik' },
+  {key:'fl', label:'Lebihan Cecair',        opts:['Ya','Tidak'],              dflt:'Tidak'},
+  {key:'dy', label:'Sesak Nafas (Dyspnoea)',opts:['Ya','Tidak'],              dflt:'Tidak'},
+  {key:'oe', label:'Edema',                 opts:['Ya','Tidak'],              dflt:'Tidak'},
+  {key:'in', label:'Radang (Inflamation)',  opts:['Ya','Tidak'],              dflt:'Tidak'},
+  {key:'hm', label:'Hematoma',              opts:['Ya','Tidak'],              dflt:'Tidak'},
+  {key:'th', label:'Thrill',                opts:['Biasa','Tidak Biasa'],     dflt:'Biasa'},
+  {key:'ef', label:'Toleransi Usaha',       opts:['Baik','Sederhana','Lemah'],dflt:'Baik'},
 ];
 
-function buildAssessment() {
-  const c = document.getElementById('assessment-rows');
-  c.innerHTML = assessItems.map(a => {
-    const pills = a.opts.map(o => {
-      const cls = getRadioClass(a.key, o, a.dflt);
-      return `<button class="radio-pill ${cls}" onclick="selectRadio('${a.key}','${o}',this)">${o}</button>`;
+function buildAssessment(){
+  const c = g('assessment-rows');
+  c.innerHTML = assessItems.map(a=>{
+    const pills = a.opts.map(o=>{
+      const cls = (S[a.key]||a.dflt)===o ? getPillCls(o) : '';
+      return `<button class="radio-pill ${cls}" onclick="selRadio('${a.key}','${o}',this)">${o}</button>`;
     }).join('');
     return `<div class="radio-row"><label>${a.label}</label><div class="radio-opts" id="rg-${a.key}">${pills}</div></div>`;
   }).join('');
-  assessItems.forEach(a => { S[a.key] = a.dflt; });
+  assessItems.forEach(a=>{ if(!S[a.key]) S[a.key]=a.dflt; });
 }
 
-function getRadioClass(key, opt, dflt) {
-  const val = S[key] || dflt;
-  if (opt !== val) return '';
-  if (opt === 'Ya') return 'selected-yes';
-  if (opt === 'Tidak' || opt === 'Biasa' || opt === 'Baik') return 'selected-no';
-  return 'selected-other';
+function getPillCls(v){
+  if(v==='Ya') return 'sel-ya';
+  if(v==='Tidak'||v==='Biasa'||v==='Baik') return 'sel-no';
+  return 'sel-oth';
 }
 
-function selectRadio(key, val, btn) {
-  S[key] = val;
-  const grp = document.getElementById('rg-' + key);
-  grp.querySelectorAll('.radio-pill').forEach(b => {
-    b.className = 'radio-pill';
-    if (b.textContent === val) {
-      b.classList.add(val === 'Ya' ? 'selected-yes' : (val === 'Tidak' || val === 'Biasa' || val === 'Baik') ? 'selected-no' : 'selected-other');
-    }
+function selRadio(key,val,btn){
+  S[key]=val;
+  document.getElementById('rg-'+key).querySelectorAll('.radio-pill').forEach(b=>{
+    b.className='radio-pill'+(b.textContent===val?' '+getPillCls(val):'');
   });
 }
 
-// ─── NAVIGATION ───
-function goPage(p) {
-  pages.forEach(x => {
-    document.getElementById('page-' + x).style.display = x === p ? '' : 'none';
-    document.getElementById('nav-' + x).classList.toggle('on', x === p);
+// ─── NAVIGATION ──────────────────────────────────────────────────
+function goPage(p){
+  pages.forEach((x,i)=>{
+    g('page-'+x).style.display = x===p?'':'none';
+    g('nav-'+x).classList.toggle('on',x===p);
   });
-  if (p === 'summary') updSummary();
-  if (p === 'post') {
-    document.getElementById('disp-uf').textContent = gv('rx-uf') || '—';
-    document.getElementById('disp-dry').textContent = gv('dry-wt') || '—';
-  }
-  window.scrollTo(0, 0);
+  if(p==='post'){ g('disp-uf').textContent=gv('rx-uf')||'—'; g('disp-dry').textContent=gv('dry-wt')||'—'; }
+  if(p==='summary') updSummary();
+  window.scrollTo(0,0);
 }
 
-// ─── HELPERS ───
-const g = id => document.getElementById(id);
-const gv = id => g(id) ? g(id).value.trim() : '';
-function rv(k) { return S[k] || '—'; }
+// ─── HELPERS ─────────────────────────────────────────────────────
+const g  = id => document.getElementById(id);
+const gv = id => g(id)?g(id).value.trim():'';
+const rv = k  => S[k]||'—';
 
-// ─── VITAL CHECKS ───
-function ckBP(el, aid) {
-  const v = el.value.trim(), al = g(aid);
-  if (!v || !v.includes('/')) { al.classList.remove('show'); return; }
-  const sys = parseInt(v), dia = parseInt(v.split('/')[1]);
-  let m = '';
-  if (sys >= 180 || dia >= 110) m = 'AMARAN: Hipertensi Teruk ≥180/110 mmHg — laporkan kepada doktor segera!';
-  else if (sys < 90 || dia < 60) m = 'AMARAN: Hipotensi — B/P rendah (<90/60 mmHg). Pantau rapi.';
-  else if (sys >= 140 || dia >= 90) m = 'PERHATIAN: B/P tinggi ≥140/90 mmHg.';
-  if (m) { al.classList.add('show'); al.querySelector('span:last-child').textContent = m; }
+// ─── VITAL CHECKS ────────────────────────────────────────────────
+function ckBP(el,aid){
+  const v=el.value.trim(), al=g(aid);
+  if(!v||!v.includes('/')){ al.classList.remove('show'); return; }
+  const sys=parseInt(v), dia=parseInt(v.split('/')[1]);
+  let m='';
+  if(sys>=180||dia>=110)      m='AMARAN: Hipertensi Teruk ≥180/110 mmHg — laporkan kepada doktor segera!';
+  else if(sys<90||dia<60)     m='AMARAN: Hipotensi — B/P rendah (<90/60). Pantau rapi.';
+  else if(sys>=140||dia>=90)  m='PERHATIAN: B/P tinggi ≥140/90 mmHg.';
+  if(m){ al.classList.add('show'); al.querySelectorAll('span')[1].textContent=m; }
   else al.classList.remove('show');
 }
 
-function ckHR(el, aid) {
-  const v = parseInt(el.value), al = g(aid);
-  if (!v) { al.classList.remove('show'); return; }
-  let m = '';
-  if (v > 120) m = 'AMARAN: Takikardia Teruk — nadi >' + v + '/min.';
-  else if (v > 100) m = 'PERHATIAN: Takikardia — nadi ' + v + '/min (>100).';
-  else if (v < 50) m = 'AMARAN: Bradikardia — nadi ' + v + '/min (<50).';
-  if (m) { al.classList.add('show'); al.querySelector('span:last-child').textContent = m; }
+function ckHR(el,aid){
+  const v=parseInt(el.value), al=g(aid);
+  if(!v){ al.classList.remove('show'); return; }
+  let m='';
+  if(v>120)      m='AMARAN: Takikardia Teruk — nadi >'+v+'/min.';
+  else if(v>100) m='PERHATIAN: Takikardia — nadi '+v+'/min.';
+  else if(v<50)  m='AMARAN: Bradikardia — nadi '+v+'/min.';
+  if(m){ al.classList.add('show'); al.querySelectorAll('span')[1].textContent=m; }
   else al.classList.remove('show');
 }
 
-function ckSpo2(el, aid) {
-  const v = parseInt(el.value), al = g(aid);
-  if (!v) { al.classList.remove('show'); return; }
-  let m = '';
-  if (v < 90) m = 'AMARAN KRITIKAL: SpO₂ ' + v + '% — sangat rendah!';
-  else if (v < 94) m = 'AMARAN: SpO₂ rendah (' + v + '%). Semak pernafasan pesakit.';
-  if (m) { al.classList.add('show'); al.querySelector('span:last-child').textContent = m; }
+function ckSpo2(el,aid){
+  const v=parseInt(el.value), al=g(aid);
+  if(!v){ al.classList.remove('show'); return; }
+  let m='';
+  if(v<90)      m='AMARAN KRITIKAL: SpO₂ '+v+'% — sangat rendah!';
+  else if(v<94) m='AMARAN: SpO₂ rendah ('+v+'%). Semak pernafasan pesakit.';
+  if(m){ al.classList.add('show'); al.querySelectorAll('span')[1].textContent=m; }
   else al.classList.remove('show');
 }
 
-// ─── CALCULATIONS ───
-function calcIDW() {
-  const pre = parseFloat(gv('pre-wt')), dry = parseFloat(gv('dry-wt'));
-  g('pre-idw').value = (!isNaN(pre) && !isNaN(dry)) ? (pre - dry).toFixed(1) + ' kg' : '';
+// ─── CALCULATIONS ────────────────────────────────────────────────
+function calcIDW(){
+  const pre=parseFloat(gv('pre-wt')), dry=parseFloat(gv('dry-wt'));
+  g('pre-idw').value=(!isNaN(pre)&&!isNaN(dry))?(pre-dry).toFixed(1)+' kg':'';
 }
 
-function calcPost() {
-  const pre = parseFloat(gv('pre-wt')), post = parseFloat(gv('post-wt')), dry = parseFloat(gv('dry-wt'));
-  if (!isNaN(pre) && !isNaN(post)) {
-    const tfr = (pre - post).toFixed(1);
-    g('post-tfr').value = tfr + ' kg';
-    g('disp-tfr').textContent = tfr;
-    if (!isNaN(dry)) {
-      const ib = (post - dry).toFixed(1);
-      g('post-idw').value = ib + ' kg';
-      g('disp-idwb').textContent = ib;
+function calcPost(){
+  const pre=parseFloat(gv('pre-wt')), post=parseFloat(gv('post-wt')), dry=parseFloat(gv('dry-wt'));
+  if(!isNaN(pre)&&!isNaN(post)){
+    const tfr=(pre-post).toFixed(1);
+    g('post-tfr').value=tfr+' kg';
+    g('disp-tfr').textContent=tfr;
+    if(!isNaN(dry)){
+      const ib=(post-dry).toFixed(1);
+      g('post-idw').value=ib+' kg';
+      g('disp-idwb').textContent=ib;
     }
   }
 }
 
-// ─── MEDICATION ───
-let mc = 0;
-
-const FIXED_MEDS = [
-  { id: 'med-recormon',  name: 'IV Recormon',  type: 'standard', note: 'Erythropoietin' },
-  { id: 'med-calcitriol',name: 'IV Calcitriol', type: 'standard', note: 'Vitamin D3 aktif' },
-  { id: 'med-iron',      name: 'IV Iron',       type: 'prn',      note: 'PRN — berikan jika perlu' },
-  { id: 'med-blank1',    name: '',              type: 'blank',    note: '' },
-  { id: 'med-blank2',    name: '',              type: 'blank',    note: '' },
-];
-
-function buildMedList() {
-  const c = g('med-list');
-  c.innerHTML = '';
-  FIXED_MEDS.forEach(m => {
-    c.appendChild(createMedCard(m.id, m.name, m.type, m.note, false));
-  });
-}
-
-function createMedCard(id, name, type, note, removable) {
-  const div = document.createElement('div');
-  div.className = 'med-item'; div.id = id;
-
-  const badgeLabel = type === 'prn' ? 'PRN' : type === 'tambahan' ? 'Tambahan' : type === 'blank' ? 'Ubat' : 'Standard';
-  const badgeClass = type === 'prn' ? 'prn' : type === 'tambahan' ? 'tambahan' : type === 'blank' ? 'tambahan' : 'standard';
-  const isBlank = (type === 'blank' || type === 'tambahan');
-
-  // Default route based on type
-  const defaultRoute = (type === 'standard' || type === 'prn') ? 'IV (Intravena)' : 'IV (Intravena)';
-
-  div.innerHTML = `
-    <div class="med-top">
-      ${isBlank
-        ? `<div class="med-name"><input id="${id}-name" type="text" placeholder="Nama ubat..." style="font-size:13px;font-weight:600;border:none;background:transparent;color:var(--text);padding:0;width:100%;outline:none"/></div>`
-        : `<div class="med-name">${name}</div>`}
-      <span class="med-badge ${badgeClass}">${badgeLabel}</span>
-      <div class="med-toggle">
-        <button id="${id}-yes" onclick="toggleMed('${id}','Ya')">Beri ✓</button>
-        <button id="${id}-no"  onclick="toggleMed('${id}','Tidak')" class="active-no">Tidak</button>
-      </div>
-      ${removable ? `<button class="med-del" onclick="delMedRow('${id}')">✕</button>` : ''}
-    </div>
-
-    <!-- DOS — sentiasa kelihatan -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px">
-      <div class="field">
-        <label>Dos / Kuantiti</label>
-        <input id="${id}-dos" type="text" placeholder="cth: 4000IU, 1mcg, 100mg"/>
-      </div>
-      <div class="field">
-        <label>Laluan (Route)</label>
-        <select id="${id}-route" style="height:40px;padding:0 10px;border:1px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);font-size:14px;-webkit-appearance:none;appearance:none">
-          <option>IV (Intravena)</option>
-          <option>SC (Subkutaneus)</option>
-          <option>IM (Intramuskular)</option>
-          <option>PO (Oral)</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- MASA & CATATAN — hanya muncul selepas "Beri ✓" -->
-    <div id="${id}-extra" style="display:none;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px">
-      <div class="field">
-        <label>Masa diberikan</label>
-        <input id="${id}-masa" type="time"/>
-      </div>
-      <div class="field">
-        <label>Catatan</label>
-        <input id="${id}-nota" type="text" placeholder="..."/>
-      </div>
-    </div>
-
-    ${note ? `<div class="med-note" id="${id}-note" style="margin-top:5px">${note}</div>` : ''}`;
-
-  return div;
-}
-
-function toggleMed(id, val) {
-  const card   = g(id);
-  const extra  = g(id + '-extra');
-  const btnYes = g(id + '-yes');
-  const btnNo  = g(id + '-no');
-
-  if (val === 'Ya') {
-    card.className = 'med-item given';
-    btnYes.className = 'active-yes';
-    btnNo.className  = '';
-    if (extra) { extra.style.display = 'grid'; }
-    // Set masa automatik jika kosong
-    const masaEl = g(id + '-masa');
-    if (masaEl && !masaEl.value) {
-      const now = new Date();
-      masaEl.value = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
-    }
-  } else {
-    card.className = 'med-item not-given';
-    btnYes.className = '';
-    btnNo.className  = 'active-no';
-    if (extra) { extra.style.display = 'none'; }
-  }
-}
-
-function addMedRow() {
-  mc++;
-  const id = 'med-custom-' + mc;
-  const card = createMedCard(id, '', 'tambahan', '', true);
-  g('med-list').appendChild(card);
-}
-
-function delMedRow(id) { const el = g(id); if (el) el.remove(); }
-
-function getMedPayload() {
-  const all = g('med-list').querySelectorAll('.med-item');
-  const result = [];
-  all.forEach(card => {
-    const id = card.id;
-    const btnYes = g(id + '-yes');
-    const given = btnYes && btnYes.className.includes('active-yes');
-    const nameEl = g(id + '-name');
-    const fixedMed = FIXED_MEDS.find(m => m.id === id);
-    const name = fixedMed ? fixedMed.name : (nameEl ? nameEl.value.trim() : '');
-    if (!name && !given) return; // skip blank kosong
-    result.push({
-      nama: name || '(ubat tidak dinamakan)',
-      status: given ? 'Diberikan' : 'Tidak diberikan',
-      dos:   given ? (gv(id + '-dos')   || '') : '',
-      masa:  given ? (gv(id + '-masa')  || '') : '',
-      route: given ? (g(id + '-route') ? g(id + '-route').value : '') : '',
-      nota:  given ? (gv(id + '-nota')  || '') : '',
-    });
-  });
-  return result;
-}
-
-// ─── INTRADIALYTIC ROWS ───
-function addIntraRow() {
+// ─── INTRADIALYTIC ───────────────────────────────────────────────
+function addIntraRow(){
   ic++;
-  const i = ic;
-  const now = new Date();
-  const t = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
-  const div = document.createElement('div');
-  div.className = 'intra-card'; div.id = 'ir-' + i;
-  div.innerHTML = `
+  const i=ic;
+  const now=new Date();
+  const t=now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');
+  const div=document.createElement('div');
+  div.className='intra-card'; div.id='ir-'+i;
+  div.innerHTML=`
     <div class="intra-hd">
-      <span class="intra-hd-lbl">⏱ Bacaan ke-${i} (Jam ${i * 2})</span>
+      <span class="intra-hd-lbl">⏱ Bacaan ke-${i} (Jam ${i*2})</span>
       <button class="del-btn" onclick="delIntraRow(${i})">✕</button>
     </div>
     <div class="grid2">
@@ -827,203 +505,266 @@ function addIntraRow() {
     </div>`;
   g('intra-rows').appendChild(div);
 }
+function delIntraRow(i){ const el=g('ir-'+i); if(el) el.remove(); }
 
-function delIntraRow(i) { const el = g('ir-' + i); if (el) el.remove(); }
+// ─── MEDICATION ──────────────────────────────────────────────────
+const FIXED_MEDS=[
+  {id:'med-recormon',  name:'IV Recormon',  type:'standard', note:'Erythropoietin'},
+  {id:'med-calcitriol',name:'IV Calcitriol', type:'standard', note:'Vitamin D3 aktif'},
+  {id:'med-iron',      name:'IV Iron',       type:'prn',      note:'PRN — berikan jika perlu'},
+  {id:'med-blank1',    name:'',             type:'blank',    note:''},
+  {id:'med-blank2',    name:'',             type:'blank',    note:''},
+];
 
-// ─── SUMMARY ───
-function updSummary() {
-  g('s-bp-pre').textContent  = gv('pre-bp')    || '—';
-  g('s-bp-post').textContent = gv('post-bp')   || '—';
-  g('s-hr-pre').textContent  = gv('pre-hr')    || '—';
-  g('s-hr-post').textContent = gv('post-hr')   || '—';
-  g('s-spo2').textContent    = gv('post-spo2') || '—';
-  const pr = parseFloat(gv('pre-wt')), po = parseFloat(gv('post-wt'));
-  g('s-tfr').textContent = (!isNaN(pr) && !isNaN(po)) ? (pr - po).toFixed(1) : '—';
-
-  // Ubat-ubatan
-  const meds = getMedPayload();
-  if (meds.length) {
-    let medRows = meds.map(m =>
-      `<tr>
-        <td style="font-weight:500">${m.nama}</td>
-        <td><span style="padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500;background:${m.status==='Diberikan'?'var(--teal-lt)':'var(--gray-lt)'};color:${m.status==='Diberikan'?'var(--teal)':'var(--text3)'}">${m.status}</span></td>
-        <td>${m.dos||'—'}</td>
-        <td>${m.masa||'—'}</td>
-        <td>${m.route||'—'}</td>
-      </tr>`).join('');
-    g('s-med-tbl').innerHTML = `<table class="sum-table"><thead><tr><th>Ubat</th><th>Status</th><th>Dos</th><th>Masa</th><th>Laluan</th></tr></thead><tbody>${medRows}</tbody></table>`;
-  } else {
-    g('s-med-tbl').innerHTML = '<p style="font-size:12px;color:var(--text3);padding:4px 0">Tiada rekod ubatan.</p>';
-  }
-
-  let rows = '';
-  for (let i = 1; i <= ic; i++) {
-    if (!g('ir-' + i)) continue;
-    const gf = f => gv('it-' + f + '-' + i) || '—';
-    rows += `<tr><td>${gf('t')}</td><td>${gf('bp')}</td><td>${gf('hr')}</td><td>${gf('tmp')}</td><td>${gf('qb')}</td><td>${gf('vp')}</td><td>${gf('tfr')}</td></tr>`;
-  }
-  g('s-intra-tbl').innerHTML = rows
-    ? `<table class="sum-table"><thead><tr><th>Masa</th><th>B/P</th><th>Nadi</th><th>T°</th><th>Qb</th><th>VP</th><th>TFR</th></tr></thead><tbody>${rows}</tbody></table>`
-    : '<p style="font-size:12px;color:var(--text3);padding:4px 0">Tiada bacaan intradialitik.</p>';
+function buildMedList(){
+  const c=g('med-list'); c.innerHTML='';
+  FIXED_MEDS.forEach(m=>c.appendChild(createMedCard(m.id,m.name,m.type,m.note,false)));
 }
 
-// ─── BUILD PAYLOAD ───
-function getPayload() {
-  let intraArr = [];
-  for (let i = 1; i <= ic; i++) {
-    if (!g('ir-' + i)) continue;
-    const gf = f => gv('it-' + f + '-' + i);
-    intraArr.push({ masa: gf('t'), bp: gf('bp'), hr: gf('hr'), tmp: gf('tmp'), qb: gf('qb'), hep: gf('hep'), vp: gf('vp'), tfr: gf('tfr'), tmp2: gf('tmp2') });
+function createMedCard(id,name,type,note,removable){
+  const div=document.createElement('div');
+  div.className='med-item'; div.id=id;
+  const bLbl = type==='prn'?'PRN':type==='tambahan'||type==='blank'?'Ubat':'Standard';
+  const bCls = type==='prn'?'prn':type==='tambahan'||type==='blank'?'tambahan':'standard';
+  const isBlank=(type==='blank'||type==='tambahan');
+  div.innerHTML=`
+    <div class="med-top">
+      ${isBlank
+        ?`<div class="med-name"><input id="${id}-name" type="text" placeholder="Nama ubat..." style="font-size:13px;font-weight:600;border:none;background:transparent;color:var(--text);padding:0;width:100%;outline:none"/></div>`
+        :`<div class="med-name">${name}</div>`}
+      <span class="med-badge ${bCls}">${bLbl}</span>
+      <div class="med-toggle">
+        <button id="${id}-yes" onclick="toggleMed('${id}','Ya')">Beri ✓</button>
+        <button id="${id}-no"  onclick="toggleMed('${id}','Tidak')" class="active-no">Tidak</button>
+      </div>
+      ${removable?`<button class="med-del" onclick="delMedRow('${id}')">✕</button>`:''}
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px">
+      <div class="field">
+        <label>Dos / Kuantiti</label>
+        <input id="${id}-dos" type="text" placeholder="cth: 4000IU, 1mcg"/>
+      </div>
+      <div class="field">
+        <label>Laluan (Route)</label>
+        <select id="${id}-route" style="height:40px;padding:0 10px;border:1px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);font-size:14px;-webkit-appearance:none">
+          <option>IV (Intravena)</option>
+          <option>SC (Subkutaneus)</option>
+          <option>IM (Intramuskular)</option>
+          <option>PO (Oral)</option>
+        </select>
+      </div>
+    </div>
+    <div id="${id}-extra" style="display:none;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px">
+      <div class="field"><label>Masa diberikan</label><input id="${id}-masa" type="time"/></div>
+      <div class="field"><label>Catatan</label><input id="${id}-nota" type="text" placeholder="..."/></div>
+    </div>
+    ${note?`<div class="med-note" style="margin-top:5px">${note}</div>`:''}`;
+  return div;
+}
+
+function toggleMed(id,val){
+  const card=g(id), extra=g(id+'-extra');
+  const btnY=g(id+'-yes'), btnN=g(id+'-no');
+  if(val==='Ya'){
+    card.className='med-item given';
+    btnY.className='active-yes'; btnN.className='';
+    if(extra) extra.style.display='grid';
+    const masaEl=g(id+'-masa');
+    if(masaEl&&!masaEl.value){
+      const now=new Date();
+      masaEl.value=now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');
+    }
+  } else {
+    card.className='med-item not-given';
+    btnY.className=''; btnN.className='active-no';
+    if(extra) extra.style.display='none';
   }
-  const hosp = localStorage.getItem('hosp-name') || 'Hospital Tambunan';
-  const unit = localStorage.getItem('hosp-unit') || 'Unit Hemodialisis';
-  return {
-    timestamp: new Date().toISOString(),
-    hospital: hosp,
-    unit: unit,
-    tarikh: gv('p-date'),
-    masa_mula: gv('p-tstart'),
+}
+
+function addMedRow(){ mc++; const id='med-custom-'+mc; g('med-list').appendChild(createMedCard(id,'','tambahan','',true)); }
+function delMedRow(id){ const el=g(id); if(el) el.remove(); }
+
+function getMedPayload(){
+  const result=[];
+  g('med-list').querySelectorAll('.med-item').forEach(card=>{
+    const id=card.id;
+    const given=g(id+'-yes')&&g(id+'-yes').className.includes('active-yes');
+    const fixedM=FIXED_MEDS.find(m=>m.id===id);
+    const nameEl=g(id+'-name');
+    const name=fixedM?fixedM.name:(nameEl?nameEl.value.trim():'');
+    if(!name&&!given) return;
+    result.push({
+      nama: name||'(ubat tidak dinamakan)',
+      status: given?'Diberikan':'Tidak diberikan',
+      dos:   gv(id+'-dos'),
+      masa:  given?gv(id+'-masa'):'',
+      route: g(id+'-route')?g(id+'-route').value:'',
+      nota:  given?gv(id+'-nota'):'',
+    });
+  });
+  return result;
+}
+
+// ─── SUMMARY ─────────────────────────────────────────────────────
+function updSummary(){
+  // Vital table
+  g('s-tv1-bp').textContent   = gv('tv1-bp')||'—';
+  g('s-tv1-hr').textContent   = gv('tv1-hr')||'—';
+  g('s-tv1-tmp').textContent  = gv('tv1-tmp')||'—';
+  g('s-tv1-spo2').textContent = gv('tv1-spo2')||'—';
+  g('s-tv2-bp').textContent   = gv('tv2-bp')||'—';
+  g('s-tv2-hr').textContent   = gv('tv2-hr')||'—';
+  g('s-tv2-tmp').textContent  = gv('tv2-tmp')||'—';
+  g('s-tv2-spo2').textContent = gv('tv2-spo2')||'—';
+  g('s-post-bp').textContent  = gv('post-bp')||'—';
+  g('s-post-hr').textContent  = gv('post-hr')||'—';
+  g('s-post-tmp').textContent = gv('post-tmp')||'—';
+  g('s-post-spo2').textContent= gv('post-spo2')||'—';
+  const pr=parseFloat(gv('pre-wt')), po=parseFloat(gv('post-wt'));
+  g('s-tfr').textContent=(!isNaN(pr)&&!isNaN(po))?(pr-po).toFixed(1):'—';
+  g('s-idwb').textContent=gv('post-idw').replace(' kg','')||'—';
+
+  // Medication table
+  const meds=getMedPayload();
+  g('s-med-tbl').innerHTML=meds.length
+    ?`<table class="sum-table"><thead><tr><th>Ubat</th><th>Status</th><th>Dos</th><th>Masa</th><th>Laluan</th></tr></thead><tbody>${
+      meds.map(m=>`<tr>
+        <td style="font-weight:500">${m.nama}</td>
+        <td><span style="padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500;background:${m.status==='Diberikan'?'var(--teal-lt)':'var(--gray-lt)'};color:${m.status==='Diberikan'?'var(--teal)':'var(--text3)'}">${m.status}</span></td>
+        <td>${m.dos||'—'}</td><td>${m.masa||'—'}</td><td>${m.route||'—'}</td>
+      </tr>`).join('')
+    }</tbody></table>`
+    :'<p style="font-size:12px;color:var(--text3);padding:4px 0">Tiada rekod ubatan.</p>';
+
+  // Intra table
+  let rows='';
+  for(let i=1;i<=ic;i++){
+    if(!g('ir-'+i)) continue;
+    const gf=f=>gv('it-'+f+'-'+i)||'—';
+    rows+=`<tr><td>${gf('t')}</td><td>${gf('bp')}</td><td>${gf('hr')}</td><td>${gf('tmp')}</td><td>${gf('qb')}</td><td>${gf('vp')}</td><td>${gf('tfr')}</td></tr>`;
+  }
+  g('s-intra-tbl').innerHTML=rows
+    ?`<table class="sum-table"><thead><tr><th>Masa</th><th>B/P</th><th>Nadi</th><th>T°</th><th>Qb</th><th>VP</th><th>TFR</th></tr></thead><tbody>${rows}</tbody></table>`
+    :'<p style="font-size:12px;color:var(--text3);padding:4px 0">Tiada bacaan intradialitik.</p>';
+}
+
+// ─── PAYLOAD ─────────────────────────────────────────────────────
+function getPayload(){
+  let intraArr=[];
+  for(let i=1;i<=ic;i++){
+    if(!g('ir-'+i)) continue;
+    const gf=f=>gv('it-'+f+'-'+i);
+    intraArr.push({masa:gf('t'),bp:gf('bp'),hr:gf('hr'),tmp:gf('tmp'),qb:gf('qb'),hep:gf('hep'),vp:gf('vp'),tfr:gf('tfr'),tmp2:gf('tmp2')});
+  }
+  return{
+    timestamp:  new Date().toISOString(),
+    hospital:   'Hospital Tambunan',
+    unit:       'Unit Hemodialisis',
+    tarikh:     gv('p-date'),
+    masa_mula:  gv('p-tstart'),
     masa_tamat: gv('p-tend'),
-    nama: gv('p-name'),
+    nama:       gv('p-name'),
     no_pesakit: gv('p-id'),
-    syif: gv('p-shift'),
+    syif:       gv('p-shift'),
     staff_mula: gv('s-start'),
-    staff_tamat: gv('s-end'),
-    berat_kering: gv('dry-wt'),
-    dialyser: gv('rx-dial'),
+    staff_tamat:gv('s-end'),
+    berat_kering:gv('dry-wt'),
+    dialyser:   gv('rx-dial'),
     preskripsi: `Td:${gv('rx-td')}min Qb:${gv('rx-qb')} Qd:${gv('rx-qd')} UF:${gv('rx-uf')}L HepL:${gv('rx-hep-l')} HepH:${gv('rx-hep-h')}`,
     penampilan: gv('pre-ga'),
-    fistula: gv('pre-fist'),
-    penilaian: `Cecair:${rv('fl')} Sesak:${rv('dy')} Edema:${rv('oe')} Radang:${rv('in')} Hematoma:${rv('hm')} Thrill:${rv('th')} Usaha:${rv('ef')}`,
-    bp_pre: gv('pre-bp'),
-    hr_pre: gv('pre-hr'),
-    wt_pre: gv('pre-wt'),
-    tmp_pre: gv('pre-tmp'),
-    spo2_pre: gv('pre-spo2'),
-    ps_pre: gv('pre-ps'),
-    idw: gv('pre-idw'),
-    bp_pre_berdiri: gv('pre-bp-st'),
-    bp_post: gv('post-bp'),
-    hr_post: gv('post-hr'),
-    wt_post: gv('post-wt'),
-    tmp_post: gv('post-tmp'),
-    spo2_post: gv('post-spo2'),
-    ps_post: gv('post-ps'),
-    tfr: gv('post-tfr'),
-    idw_baki: gv('post-idw'),
-    ubatan: JSON.stringify(getMedPayload()),
-    data_intra: JSON.stringify(intraArr)
+    fistula:    gv('pre-fist'),
+    penilaian:  `Cecair:${rv('fl')} Sesak:${rv('dy')} Edema:${rv('oe')} Radang:${rv('in')} Hematoma:${rv('hm')} Thrill:${rv('th')} Usaha:${rv('ef')}`,
+    // Tanda vital pertama
+    bp_pertama:   gv('tv1-bp'),
+    hr_pertama:   gv('tv1-hr'),
+    tmp_pertama:  gv('tv1-tmp'),
+    spo2_pertama: gv('tv1-spo2'),
+    ps_pertama:   gv('tv1-ps'),
+    idw:          gv('pre-idw'),
+    wt_pre:       gv('pre-wt'),
+    bp_pertama_st:gv('tv1-bp-st'),
+    // Tanda vital baseline
+    bp_baseline:  gv('tv2-bp'),
+    hr_baseline:  gv('tv2-hr'),
+    tmp_baseline: gv('tv2-tmp'),
+    spo2_baseline:gv('tv2-spo2'),
+    ps_baseline:  gv('tv2-ps'),
+    vp_baseline:  gv('tv2-vp'),
+    qb_baseline:  gv('tv2-qb'),
+    bp_baseline_st:gv('tv2-bp-st'),
+    // Post HD
+    bp_post:    gv('post-bp'),
+    hr_post:    gv('post-hr'),
+    wt_post:    gv('post-wt'),
+    tmp_post:   gv('post-tmp'),
+    spo2_post:  gv('post-spo2'),
+    ps_post:    gv('post-ps'),
+    tfr:        gv('post-tfr'),
+    idw_baki:   gv('post-idw'),
+    ubatan:     JSON.stringify(getMedPayload()),
+    data_intra: JSON.stringify(intraArr),
   };
 }
 
-// ─── GOOGLE SHEETS ───
-async function sendSheets() {
-  const url = localStorage.getItem('gas-url') || gv('gas-url');
-  if (!url) {
-    showToast('err', '⚙ Sila masukkan URL Apps Script dalam tab Tetapan terlebih dahulu.');
-    return;
-  }
-  if (!gv('p-name')) {
-    showToast('err', '⚠ Sila isi nama pesakit sebelum menghantar data.');
-    return;
-  }
-  showToast('info', '📤 Menghantar data ke Google Sheets...');
-  try {
-    await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(getPayload()),
-      mode: 'no-cors'
-    });
-    showToast('ok', '✅ Data berjaya dihantar ke Google Sheets!');
-  } catch (e) {
-    showToast('err', '❌ Gagal menghantar. Semak sambungan internet dan URL.');
+// ─── SEND TO SHEETS ───────────────────────────────────────────────
+async function sendSheets(){
+  if(!gv('p-name')){ showToast('err','⚠ Sila isi nama pesakit sebelum menghantar data.'); return; }
+  showToast('info','📤 Menghantar data ke Google Sheets...');
+  try{
+    await fetch(GAS_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(getPayload()),mode:'no-cors'});
+    showToast('ok','✅ Data berjaya dihantar ke Google Sheets!');
+  }catch(e){
+    showToast('err','❌ Gagal menghantar. Semak sambungan internet.');
   }
 }
 
-async function testConn() {
-  const url = gv('gas-url');
-  if (!url) { showToast('err', 'Masukkan URL dahulu.'); return; }
-  showToast('info', '🔌 Menguji sambungan...');
-  try {
-    await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ test: true, source: 'HD Monitor PWA' }),
-      mode: 'no-cors'
-    });
-    showToast('ok', '✅ Sambungan berjaya. URL sah!');
-  } catch (e) {
-    showToast('err', '❌ Gagal. Semak URL dan tetapan Apps Script.');
-  }
-}
-
-// ─── CSV EXPORT ───
-function exportCSV() {
-  const p = getPayload();
-  const keys = Object.keys(p).filter(k => k !== 'data_intra');
-  const row = keys.map(k => '"' + String(p[k] || '').replace(/"/g, '""') + '"').join(',');
-  const csv = keys.join(',') + '\n' + row;
-  const a = document.createElement('a');
-  a.href = 'data:text/csv;charset=utf-8,\uFEFF' + encodeURIComponent(csv);
-  a.download = 'HD_' + (gv('p-name') || 'pesakit') + '_' + (gv('p-date') || new Date().toISOString().slice(0,10)) + '.csv';
+// ─── CSV EXPORT ───────────────────────────────────────────────────
+function exportCSV(){
+  const p=getPayload();
+  const keys=Object.keys(p).filter(k=>k!=='data_intra'&&k!=='ubatan');
+  const row=keys.map(k=>'"'+String(p[k]||'').replace(/"/g,'""')+'"').join(',');
+  const csv=keys.join(',')+'\n'+row;
+  const a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);
+  a.download='HD_'+(gv('p-name')||'pesakit')+'_'+(gv('p-date')||new Date().toISOString().slice(0,10))+'.csv';
   a.click();
-  showToast('ok', '📥 Fail CSV dimuat turun.');
+  showToast('ok','📥 Fail CSV dimuat turun.');
 }
 
-// ─── TOAST ───
+// ─── TOAST ───────────────────────────────────────────────────────
 let toastTimer;
-function showToast(type, msg) {
-  const el = g('toast');
-  el.className = 'toast toast-' + type + ' show';
-  el.textContent = msg;
+function showToast(type,msg){
+  const el=g('toast');
+  el.className='toast toast-'+type+' show';
+  el.textContent=msg;
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => { el.className = 'toast'; }, 4000);
+  toastTimer=setTimeout(()=>{ el.className='toast'; },4000);
 }
 
-// ─── CLEAR ───
-function clearAll() {
-  if (!confirm('Kosongkan semua data rekod ini? Tindakan ini tidak boleh dibuat alik.')) return;
-  document.querySelectorAll('input:not(#gas-url):not(#hosp-name):not(#hosp-unit)').forEach(el => el.value = '');
-  g('intra-rows').innerHTML = ''; ic = 0;
-  // Reset medication
+// ─── CLEAR ALL ───────────────────────────────────────────────────
+function clearAll(){
+  if(!confirm('Kosongkan semua data rekod ini?')) return;
+  document.querySelectorAll('input').forEach(el=>el.value='');
+  g('intra-rows').innerHTML=''; ic=0;
   buildMedList();
   buildAssessment();
   goPage('pre');
-  showToast('ok', '🗑 Semua data rekod telah dikosongkan.');
+  showToast('ok','🗑 Semua data rekod telah dikosongkan.');
 }
 
-// ─── SETTINGS PERSISTENCE ───
-function saveGasUrl() { localStorage.setItem('gas-url', gv('gas-url')); }
-function saveHospName() { localStorage.setItem('hosp-name', gv('hosp-name')); }
-function saveHospUnit() { localStorage.setItem('hosp-unit', gv('hosp-unit')); }
+// ─── OFFLINE ─────────────────────────────────────────────────────
+window.addEventListener('online', ()=>g('offline-bar').classList.remove('show'));
+window.addEventListener('offline',()=>g('offline-bar').classList.add('show'));
 
-function loadSettings() {
-  const url = localStorage.getItem('gas-url');
-  if (url && g('gas-url')) g('gas-url').value = url;
-  const hn = localStorage.getItem('hosp-name');
-  if (hn && g('hosp-name')) g('hosp-name').value = hn;
-  const hu = localStorage.getItem('hosp-unit');
-  if (hu && g('hosp-unit')) g('hosp-unit').value = hu;
-}
+// ─── SERVICE WORKER ───────────────────────────────────────────────
+if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(()=>{});
 
-// ─── OFFLINE DETECTION ───
-window.addEventListener('online',  () => g('offline-bar').classList.remove('show'));
-window.addEventListener('offline', () => g('offline-bar').classList.add('show'));
-
-// ─── SERVICE WORKER ───
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js').catch(() => {});
-}
-
-// ─── INIT ───
+// ─── INIT ────────────────────────────────────────────────────────
 buildAssessment();
 buildMedList();
-loadSettings();
 addIntraRow();
-
-const today = new Date().toISOString().slice(0, 10);
-if (g('p-date') && !g('p-date').value) g('p-date').value = today;
+const today=new Date().toISOString().slice(0,10);
+if(g('p-date')&&!g('p-date').value) g('p-date').value=today;
 </script>
 </body>
 </html>
