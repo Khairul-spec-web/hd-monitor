@@ -406,6 +406,11 @@ hr.div{border:none;border-top:.5px solid var(--border);margin:12px 0}
 <script>
 const GAS_URL='https://script.google.com/macros/s/AKfycbzAzBc9Vfdf5uI_GgmGNQ3YY0iZFctSy2XzbVoOZGZuaV9HfAUuoiB7voOVePPo_W6J/exec';
 
+// ─── HELPERS — mesti di atas sekali ───────────────────────────
+const g  = id => document.getElementById(id);
+const gv = id => g(id) ? g(id).value.trim() : '';
+const rv = k  => S[k] || '—';
+
 let ic=0, mc=0;
 const pages=['pre','intra','post','summary'];
 const S={};
@@ -468,10 +473,6 @@ function goPage(p){
   if(p==='summary') updSummary();
   window.scrollTo(0,0);
 }
-
-const g=id=>document.getElementById(id);
-const gv=id=>g(id)?g(id).value.trim():'';
-const rv=k=>S[k]||'—';
 
 // ─── VITAL CHECKS ─────────────────────────────────────────────
 function ckBP(el,aid){
