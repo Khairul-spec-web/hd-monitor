@@ -676,7 +676,7 @@ function getPayload(){
     staff_tamat:  gv('s-end'),
     berat_kering: gv('dry-wt'),
     dialyser:     gv('rx-dial'),
-    dialyser_use: dUse==='first'?'First Use':('Reuse'+(reuseN?' (kali ke-'+reuseN+')','')),
+    dialyser_use: dUse==='first'?'First Use':('Reuse'+(reuseN?' (kali ke-'+reuseN+')':'')),
     rdt_reprocessed: RDT.repr||'—',
     rdt_pre_priming: RDT.pre||'—',
     rdt_post_priming:RDT.post||'—',
