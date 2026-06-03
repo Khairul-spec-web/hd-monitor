@@ -1,4 +1,4 @@
-const CACHE = 'hd-monitor-v3';
+const CACHE = 'hd-monitor-v4';
 const ASSETS = [
   './',
   './index.html',
