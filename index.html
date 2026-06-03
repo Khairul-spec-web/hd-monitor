@@ -42,32 +42,24 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);font-size:15px}
 
-/* TOP BAR */
 .topbar{background:var(--blue);color:#fff;padding:env(safe-area-inset-top,0) 0 0;position:sticky;top:0;z-index:100}
 .topbar-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
 .topbar-sub{font-size:11px;opacity:.75;margin-top:1px}
 .topbar-actions{display:flex;gap:6px}
 .icon-btn{background:rgba(255,255,255,0.18);border:none;color:#fff;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer}
 
-/* BOTTOM NAV */
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:.5px solid var(--border);display:flex;padding-bottom:env(safe-area-inset-bottom,0);z-index:100}
 .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:8px 4px 6px;border:none;background:none;color:var(--text3);font-size:10px;cursor:pointer;gap:3px}
 .nav-item .icon{font-size:20px}
 .nav-item.on{color:var(--blue)}
 
-/* CONTENT */
 .content{padding:12px 12px 88px;min-height:calc(100vh - 60px)}
 
-/* CARD */
 .card{background:var(--bg2);border-radius:var(--radius-lg);border:.5px solid var(--border);padding:14px;margin-bottom:10px;box-shadow:var(--shadow)}
 .card-title{font-size:12px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px;display:flex;align-items:center;gap:6px}
 .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.dot-pre{background:var(--blue)}.dot-base{background:var(--teal)}.dot-intra{background:#0F6E56}.dot-post{background:#993C1D}.dot-med{background:var(--purple)}
+.dot-pre{background:var(--blue)}.dot-base{background:var(--teal)}.dot-intra{background:#0F6E56}.dot-post{background:#993C1D}.dot-med{background:var(--purple)}.dot-rdt{background:var(--amber-dk)}
 
-/* SECTION LABEL inside card */
-.sec-lbl{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;padding:6px 0 8px;border-bottom:.5px solid var(--border);margin-bottom:10px;display:flex;align-items:center;gap:6px}
-
-/* FORM */
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .field{display:flex;flex-direction:column;gap:4px}
 .field label{font-size:11px;color:var(--text2);font-weight:500;text-transform:uppercase;letter-spacing:.04em}
@@ -77,7 +69,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 .sel-wrap{position:relative}.sel-wrap select{width:100%;padding-right:30px}
 .sel-wrap::after{content:'▾';position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text3);pointer-events:none;font-size:12px}
 
-/* RADIO */
+/* RADIO PILL */
 .radio-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:.5px solid var(--border);font-size:13px}
 .radio-row:last-child{border-bottom:none;padding-bottom:0}
 .radio-row label{color:var(--text2)}
@@ -86,6 +78,21 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 .radio-pill.sel-ya{background:var(--red-lt);border-color:var(--red);color:var(--red)}
 .radio-pill.sel-no{background:var(--green-lt);border-color:var(--green);color:var(--green)}
 .radio-pill.sel-oth{background:var(--blue-lt);border-color:var(--blue);color:var(--blue-dk)}
+
+/* RDT rows */
+.rdt-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:.5px solid var(--border);font-size:13px}
+.rdt-row:last-child{border-bottom:none;padding-bottom:0}
+.rdt-lbl{color:var(--text);font-weight:500;flex:1}
+.rdt-sub{font-size:11px;color:var(--text3);margin-top:1px}
+.yn-group{display:flex;gap:4px}
+.yn-btn{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid var(--border2);background:var(--bg);color:var(--text2);cursor:pointer;transition:all .15s}
+.yn-btn.yes{background:var(--green-lt);border-color:var(--green);color:var(--green)}
+.yn-btn.no{background:var(--red-lt);border-color:var(--red);color:var(--red)}
+
+/* USE TYPE toggle */
+.use-toggle{display:flex;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border2);margin-top:8px}
+.use-btn{flex:1;padding:9px;border:none;font-size:13px;font-weight:600;cursor:pointer;background:var(--bg);color:var(--text2);transition:all .15s}
+.use-btn.active{background:var(--blue);color:#fff}
 
 /* ALERT */
 .alert{display:none;align-items:center;gap:8px;margin-top:6px;padding:8px 10px;border-radius:var(--radius);background:var(--red-lt);border:1px solid var(--red-bd);color:var(--red);font-size:12px;line-height:1.4}
@@ -117,23 +124,19 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 .btn-outline:active{background:var(--gray-lt)}
 .btn-danger{background:var(--red-lt);border:1px solid var(--red-bd);color:var(--red)}
 
-/* MEDICATION */
-.med-item{border:1px solid var(--border2);border-radius:var(--radius);padding:10px 12px;margin-bottom:8px;background:var(--bg);transition:border-color .15s}
-.med-item.given{border-color:var(--teal);background:var(--teal-lt)}
-.med-item.not-given{border-color:var(--gray-bd);opacity:.65}
-.med-top{display:flex;align-items:center;gap:8px;margin-bottom:10px}
-.med-name{font-size:13px;font-weight:600;flex:1;color:var(--text)}
-.med-name input{font-size:13px;font-weight:600;border:none;background:transparent;color:var(--text);padding:0;width:100%;outline:none}
+/* MEDICATION — simplified */
+.med-item{border:1px solid var(--border2);border-radius:var(--radius);padding:10px 12px;margin-bottom:8px;background:var(--bg)}
+.med-row{display:flex;align-items:center;gap:8px}
+.med-name-fixed{font-size:13px;font-weight:600;flex:1;color:var(--text)}
+.med-name-input{font-size:13px;font-weight:600;border:none;background:transparent;color:var(--text);padding:0;flex:1;outline:none;min-width:0}
 .med-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;flex-shrink:0}
 .med-badge.standard{background:var(--blue-lt);color:var(--blue-dk)}
 .med-badge.prn{background:var(--amber-lt);color:var(--amber-dk);border:1px solid var(--amber-bd)}
 .med-badge.tambahan{background:var(--gray-lt);color:var(--gray)}
-.med-toggle{display:flex;border-radius:8px;overflow:hidden;border:1px solid var(--border2);flex-shrink:0}
-.med-toggle button{padding:5px 10px;border:none;font-size:11px;font-weight:600;cursor:pointer;background:var(--bg2);color:var(--text2);transition:all .15s}
-.med-toggle button.active-yes{background:var(--teal);color:#fff}
-.med-toggle button.active-no{background:var(--gray-lt);color:var(--text2)}
 .med-del{width:28px;height:28px;border-radius:6px;border:none;flex-shrink:0;background:var(--red-lt);color:var(--red);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center}
-.med-note{font-size:11px;color:var(--text3);margin-top:4px;font-style:italic}
+.med-fields-row{display:flex;align-items:center;gap:8px;margin-top:8px}
+.med-dos-wrap{flex:1}
+.med-iv-badge{background:var(--teal-lt);color:var(--teal);font-size:11px;font-weight:600;padding:5px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;border:1px solid var(--teal)}
 
 /* TOAST */
 .toast{position:fixed;bottom:72px;left:12px;right:12px;padding:12px 14px;border-radius:var(--radius-lg);font-size:13px;display:flex;align-items:center;gap:8px;z-index:200;transform:translateY(20px);opacity:0;transition:all .25s;pointer-events:none}
@@ -142,11 +145,9 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 .toast-err{background:var(--red-lt);border:1px solid var(--red-bd);color:var(--red)}
 .toast-info{background:var(--blue-lt);border:1px solid var(--blue);color:var(--blue-dk)}
 
-/* OFFLINE */
 .offline-bar{display:none;background:var(--amber-lt);border-bottom:1px solid var(--amber-bd);padding:6px 16px;font-size:12px;color:var(--amber-dk);align-items:center;gap:6px}
 .offline-bar.show{display:flex}
 
-/* SUMMARY TABLE */
 .sum-table{width:100%;border-collapse:collapse;font-size:12px}
 .sum-table th{background:var(--gray-lt);padding:6px 8px;text-align:left;font-size:11px;color:var(--text2);font-weight:600}
 .sum-table td{padding:6px 8px;border-top:.5px solid var(--border);color:var(--text)}
@@ -157,7 +158,6 @@ hr.div{border:none;border-top:.5px solid var(--border);margin:12px 0}
 
 <div class="offline-bar" id="offline-bar">⚠ Tiada sambungan internet — mod luar talian</div>
 
-<!-- TOP BAR -->
 <div class="topbar">
   <div class="topbar-inner">
     <div>
@@ -171,9 +171,7 @@ hr.div{border:none;border-top:.5px solid var(--border);margin:12px 0}
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════
-     PAGE: PRE HD
-══════════════════════════════════════════════ -->
+<!-- ══════════ PAGE: PRE HD ══════════ -->
 <div class="content" id="page-pre">
 
   <!-- Maklumat Pesakit -->
@@ -191,11 +189,10 @@ hr.div{border:none;border-top:.5px solid var(--border);margin:12px 0}
       <div class="field"><label>Staff Mula</label><input id="s-start" type="text" placeholder="..."/></div>
       <div class="field"><label>Staff Tamat</label><input id="s-end" type="text" placeholder="..."/></div>
       <div class="field"><label>Berat Kering (kg)</label><input id="dry-wt" type="number" step="0.1" placeholder="60.0" oninput="calcIDW()"/></div>
-      <div class="field"><label>Dialyser</label><input id="rx-dial" type="text" placeholder="Jenama/Model"/></div>
     </div>
   </div>
 
-  <!-- Preskripsi -->
+  <!-- Preskripsi + Dialyser -->
   <div class="card">
     <div class="card-title"><span class="dot dot-pre"></span>Preskripsi HD</div>
     <div class="grid2">
@@ -205,6 +202,53 @@ hr.div{border:none;border-top:.5px solid var(--border);margin:12px 0}
       <div class="field"><label>UF Goal (L)</label><input id="rx-uf" type="number" step="0.1" placeholder="2.5"/></div>
       <div class="field"><label>Heparin Loading (unit)</label><input id="rx-hep-l" type="number" placeholder="2000"/></div>
       <div class="field"><label>Heparin Hourly (unit)</label><input id="rx-hep-h" type="number" placeholder="1000"/></div>
+    </div>
+    <hr class="div"/>
+    <!-- Dialyser -->
+    <div style="font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Dialyser</div>
+    <div class="field" style="margin-bottom:8px"><label>Jenama / Model</label><input id="rx-dial" type="text" placeholder="cth: Almedico, HF"/></div>
+    <div style="font-size:11px;color:var(--text2);margin-bottom:6px;font-weight:500">Jenis Penggunaan</div>
+    <div class="use-toggle">
+      <button class="use-btn active" id="use-first" onclick="setUse('first')">First Use</button>
+      <button class="use-btn" id="use-reuse" onclick="setUse('reuse')">Reuse</button>
+    </div>
+    <div id="reuse-count-wrap" style="display:none;margin-top:8px">
+      <div class="field"><label>Kali Ke-berapa Reuse</label><input id="rx-reuse-n" type="number" min="1" max="20" placeholder="cth: 2"/></div>
+    </div>
+  </div>
+
+  <!-- Residual Disinfectant Test -->
+  <div class="card">
+    <div class="card-title"><span class="dot dot-rdt"></span>Residual Disinfectant Test</div>
+    <div class="rdt-row">
+      <div>
+        <div class="rdt-lbl">Dialyser Reprocessed</div>
+        <div class="rdt-sub">&gt;100 ppm</div>
+      </div>
+      <div class="yn-group">
+        <button class="yn-btn" id="rdt-repr-yes" onclick="setRDT('repr','Yes')">Yes</button>
+        <button class="yn-btn" id="rdt-repr-no"  onclick="setRDT('repr','No')">No</button>
+      </div>
+    </div>
+    <div class="rdt-row">
+      <div>
+        <div class="rdt-lbl">Pre Priming Test</div>
+        <div class="rdt-sub">&gt;100 ppm</div>
+      </div>
+      <div class="yn-group">
+        <button class="yn-btn" id="rdt-pre-yes" onclick="setRDT('pre','Yes')">Yes</button>
+        <button class="yn-btn" id="rdt-pre-no"  onclick="setRDT('pre','No')">No</button>
+      </div>
+    </div>
+    <div class="rdt-row">
+      <div>
+        <div class="rdt-lbl">Post Priming Test</div>
+        <div class="rdt-sub">0 ppm</div>
+      </div>
+      <div class="yn-group">
+        <button class="yn-btn" id="rdt-post-yes" onclick="setRDT('post','Yes')">Yes</button>
+        <button class="yn-btn" id="rdt-post-no"  onclick="setRDT('post','No')">No</button>
+      </div>
     </div>
   </div>
 
@@ -218,7 +262,7 @@ hr.div{border:none;border-top:.5px solid var(--border);margin:12px 0}
     <div id="assessment-rows"></div>
   </div>
 
-  <!-- Tanda Vital PERTAMA — Sebelum HD -->
+  <!-- Tanda Vital PERTAMA -->
   <div class="card">
     <div class="card-title"><span class="dot dot-pre"></span>Tanda Vital PERTAMA — Sebelum HD Bermula</div>
     <div class="grid2">
@@ -236,7 +280,7 @@ hr.div{border:none;border-top:.5px solid var(--border);margin:12px 0}
     <div id="al-tv1-spo2" class="alert"><span>⚠</span><span></span></div>
   </div>
 
-  <!-- Tanda Vital BASELINE — Selepas Sambung -->
+  <!-- Tanda Vital BASELINE -->
   <div class="card">
     <div class="card-title"><span class="dot dot-base"></span>Tanda Vital BASELINE — Selepas Sambung Pesakit</div>
     <div class="grid2">
@@ -256,9 +300,7 @@ hr.div{border:none;border-top:.5px solid var(--border);margin:12px 0}
 
 </div><!-- /page-pre -->
 
-<!-- ══════════════════════════════════════════════
-     PAGE: INTRA
-══════════════════════════════════════════════ -->
+<!-- ══════════ PAGE: INTRA ══════════ -->
 <div class="content" id="page-intra" style="display:none">
   <div class="card">
     <div class="card-title"><span class="dot dot-intra"></span>Pemerhatian Intradialitik (setiap 2 jam)</div>
@@ -267,12 +309,9 @@ hr.div{border:none;border-top:.5px solid var(--border);margin:12px 0}
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════
-     PAGE: POST HD
-══════════════════════════════════════════════ -->
+<!-- ══════════ PAGE: POST HD ══════════ -->
 <div class="content" id="page-post" style="display:none">
 
-  <!-- Tanda Vital Post HD -->
   <div class="card">
     <div class="card-title"><span class="dot dot-post"></span>Tanda Vital POST HD</div>
     <div class="grid2">
@@ -284,12 +323,13 @@ hr.div{border:none;border-top:.5px solid var(--border);margin:12px 0}
       <div class="field"><label>P/S (/10)</label><input id="post-ps" type="number" min="0" max="10" placeholder="—"/></div>
       <div class="field"><label>TFR sebenar (auto, kg)</label><input id="post-tfr" type="text" readonly placeholder="auto"/></div>
       <div class="field"><label>IDW baki (auto, kg)</label><input id="post-idw" type="text" readonly placeholder="auto"/></div>
+      <!-- BVP -->
+      <div class="field"><label>BVP — Blood Volume Processed (L)</label><input id="post-bvp" type="number" step="0.1" placeholder="cth: 45.0"/></div>
     </div>
     <div id="al-post-bp" class="alert"><span>⚠</span><span></span></div>
     <div id="al-post-spo2" class="alert"><span>⚠</span><span></span></div>
   </div>
 
-  <!-- Ringkasan Cecair -->
   <div class="card">
     <div class="card-title">Ringkasan Cecair</div>
     <div class="metric-grid">
@@ -297,10 +337,11 @@ hr.div{border:none;border-top:.5px solid var(--border);margin:12px 0}
       <div class="metric"><div class="metric-label">UF Goal</div><div class="metric-val" id="disp-uf">—</div><div class="metric-unit">L</div></div>
       <div class="metric"><div class="metric-label">Berat kering</div><div class="metric-val" id="disp-dry">—</div><div class="metric-unit">kg</div></div>
       <div class="metric"><div class="metric-label">IDW baki</div><div class="metric-val" id="disp-idwb">—</div><div class="metric-unit">kg</div></div>
+      <div class="metric" style="grid-column:span 2"><div class="metric-label">BVP (Blood Volume Processed)</div><div class="metric-val" id="disp-bvp">—</div><div class="metric-unit">Liter</div></div>
     </div>
   </div>
 
-  <!-- UBAT-UBATAN — di Post HD -->
+  <!-- UBAT-UBATAN -->
   <div class="card">
     <div class="card-title"><span class="dot dot-med"></span>Ubat-ubatan Semasa HD</div>
     <div id="med-list"></div>
@@ -309,14 +350,12 @@ hr.div{border:none;border-top:.5px solid var(--border);margin:12px 0}
 
   <div class="btn-row">
     <button class="btn btn-green" onclick="sendSheets()">📊 Hantar ke Google Sheets</button>
-    <button class="btn btn-outline" onclick="exportCSV()">⬇ Eksport CSV</button>
+    <button class="btn btn-outline" onclick="exportCSV()">⬇ CSV</button>
   </div>
 
 </div><!-- /page-post -->
 
-<!-- ══════════════════════════════════════════════
-     PAGE: RINGKASAN
-══════════════════════════════════════════════ -->
+<!-- ══════════ PAGE: RINGKASAN ══════════ -->
 <div class="content" id="page-summary" style="display:none">
   <div class="card">
     <div class="card-title">Perbandingan Tanda Vital</div>
@@ -333,10 +372,11 @@ hr.div{border:none;border-top:.5px solid var(--border);margin:12px 0}
     <div class="metric-grid" style="margin-top:8px">
       <div class="metric"><div class="metric-label">TFR</div><div class="metric-val" id="s-tfr">—</div><div class="metric-unit">kg</div></div>
       <div class="metric"><div class="metric-label">IDW baki</div><div class="metric-val" id="s-idwb">—</div><div class="metric-unit">kg</div></div>
+      <div class="metric" style="grid-column:span 2"><div class="metric-label">BVP</div><div class="metric-val" id="s-bvp">—</div><div class="metric-unit">Liter</div></div>
     </div>
   </div>
   <div class="card">
-    <div class="card-title">Ubat-ubatan Diberikan</div>
+    <div class="card-title">Ubat-ubatan</div>
     <div id="s-med-tbl"></div>
   </div>
   <div class="card">
@@ -354,7 +394,6 @@ hr.div{border:none;border-top:.5px solid var(--border);margin:12px 0}
   </div>
 </div>
 
-<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
   <button class="nav-item on" id="nav-pre"     onclick="goPage('pre')">    <span class="icon">🩺</span><span>Pre HD</span></button>
   <button class="nav-item"    id="nav-intra"   onclick="goPage('intra')">  <span class="icon">⏱</span><span>Intra</span></button>
@@ -365,108 +404,114 @@ hr.div{border:none;border-top:.5px solid var(--border);margin:12px 0}
 <div class="toast" id="toast"></div>
 
 <script>
-// ─── HARDCODED APPS SCRIPT URL ───────────────────────────────────
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbzAzBc9Vfdf5uI_GgmGNQ3YY0iZFctSy2XzbVoOZGZuaV9HfAUuoiB7voOVePPo_W6J/exec';
+const GAS_URL='https://script.google.com/macros/s/AKfycbzAzBc9Vfdf5uI_GgmGNQ3YY0iZFctSy2XzbVoOZGZuaV9HfAUuoiB7voOVePPo_W6J/exec';
 
-// ─── STATE ───────────────────────────────────────────────────────
-let ic = 0, mc = 0;
-const pages = ['pre','intra','post','summary'];
+let ic=0, mc=0;
+const pages=['pre','intra','post','summary'];
+const S={};
+let dUse='first';
+const RDT={repr:'',pre:'',post:''};
 
-// ─── ASSESSMENT ──────────────────────────────────────────────────
-const S = {};
-const assessItems = [
-  {key:'fl', label:'Lebihan Cecair',        opts:['Ya','Tidak'],              dflt:'Tidak'},
-  {key:'dy', label:'Sesak Nafas (Dyspnoea)',opts:['Ya','Tidak'],              dflt:'Tidak'},
-  {key:'oe', label:'Edema',                 opts:['Ya','Tidak'],              dflt:'Tidak'},
-  {key:'in', label:'Radang (Inflamation)',  opts:['Ya','Tidak'],              dflt:'Tidak'},
-  {key:'hm', label:'Hematoma',              opts:['Ya','Tidak'],              dflt:'Tidak'},
-  {key:'th', label:'Thrill',                opts:['Biasa','Tidak Biasa'],     dflt:'Biasa'},
-  {key:'ef', label:'Toleransi Usaha',       opts:['Baik','Sederhana','Lemah'],dflt:'Baik'},
+// ─── ASSESSMENT ───────────────────────────────────────────────
+const assessItems=[
+  {key:'fl',label:'Lebihan Cecair',        opts:['Ya','Tidak'],              dflt:'Tidak'},
+  {key:'dy',label:'Sesak Nafas (Dyspnoea)',opts:['Ya','Tidak'],              dflt:'Tidak'},
+  {key:'oe',label:'Edema',                 opts:['Ya','Tidak'],              dflt:'Tidak'},
+  {key:'in',label:'Radang (Inflamation)',  opts:['Ya','Tidak'],              dflt:'Tidak'},
+  {key:'hm',label:'Hematoma',              opts:['Ya','Tidak'],              dflt:'Tidak'},
+  {key:'th',label:'Thrill',                opts:['Biasa','Tidak Biasa'],     dflt:'Biasa'},
+  {key:'ef',label:'Toleransi Usaha',       opts:['Baik','Sederhana','Lemah'],dflt:'Baik'},
 ];
-
 function buildAssessment(){
-  const c = g('assessment-rows');
-  c.innerHTML = assessItems.map(a=>{
-    const pills = a.opts.map(o=>{
-      const cls = (S[a.key]||a.dflt)===o ? getPillCls(o) : '';
-      return `<button class="radio-pill ${cls}" onclick="selRadio('${a.key}','${o}',this)">${o}</button>`;
-    }).join('');
+  const c=g('assessment-rows');
+  c.innerHTML=assessItems.map(a=>{
+    const pills=a.opts.map(o=>`<button class="radio-pill${(S[a.key]||a.dflt)===o?' '+getPillCls(o):''}" onclick="selRadio('${a.key}','${o}',this)">${o}</button>`).join('');
     return `<div class="radio-row"><label>${a.label}</label><div class="radio-opts" id="rg-${a.key}">${pills}</div></div>`;
   }).join('');
-  assessItems.forEach(a=>{ if(!S[a.key]) S[a.key]=a.dflt; });
+  assessItems.forEach(a=>{if(!S[a.key])S[a.key]=a.dflt;});
 }
-
-function getPillCls(v){
-  if(v==='Ya') return 'sel-ya';
-  if(v==='Tidak'||v==='Biasa'||v==='Baik') return 'sel-no';
-  return 'sel-oth';
-}
-
-function selRadio(key,val,btn){
+function getPillCls(v){return v==='Ya'?'sel-ya':(v==='Tidak'||v==='Biasa'||v==='Baik')?'sel-no':'sel-oth';}
+function selRadio(key,val){
   S[key]=val;
-  document.getElementById('rg-'+key).querySelectorAll('.radio-pill').forEach(b=>{
+  g('rg-'+key).querySelectorAll('.radio-pill').forEach(b=>{
     b.className='radio-pill'+(b.textContent===val?' '+getPillCls(val):'');
   });
 }
 
-// ─── NAVIGATION ──────────────────────────────────────────────────
+// ─── DIALYSER USE TYPE ────────────────────────────────────────
+function setUse(type){
+  dUse=type;
+  g('use-first').className='use-btn'+(type==='first'?' active':'');
+  g('use-reuse').className='use-btn'+(type==='reuse'?' active':'');
+  g('reuse-count-wrap').style.display=type==='reuse'?'block':'none';
+}
+
+// ─── RESIDUAL DISINFECTANT TEST ───────────────────────────────
+function setRDT(key,val){
+  RDT[key]=val;
+  const isYes=(val==='Yes');
+  g('rdt-'+key+'-yes').className='yn-btn'+(isYes?' yes':'');
+  g('rdt-'+key+'-no').className='yn-btn'+(!isYes?' no':'');
+}
+
+// ─── NAVIGATION ───────────────────────────────────────────────
 function goPage(p){
-  pages.forEach((x,i)=>{
-    g('page-'+x).style.display = x===p?'':'none';
+  pages.forEach(x=>{
+    g('page-'+x).style.display=x===p?'':'none';
     g('nav-'+x).classList.toggle('on',x===p);
   });
-  if(p==='post'){ g('disp-uf').textContent=gv('rx-uf')||'—'; g('disp-dry').textContent=gv('dry-wt')||'—'; }
+  if(p==='post'){
+    g('disp-uf').textContent=gv('rx-uf')||'—';
+    g('disp-dry').textContent=gv('dry-wt')||'—';
+    g('disp-bvp').textContent=gv('post-bvp')||'—';
+  }
   if(p==='summary') updSummary();
   window.scrollTo(0,0);
 }
 
-// ─── HELPERS ─────────────────────────────────────────────────────
-const g  = id => document.getElementById(id);
-const gv = id => g(id)?g(id).value.trim():'';
-const rv = k  => S[k]||'—';
+const g=id=>document.getElementById(id);
+const gv=id=>g(id)?g(id).value.trim():'';
+const rv=k=>S[k]||'—';
 
-// ─── VITAL CHECKS ────────────────────────────────────────────────
+// ─── VITAL CHECKS ─────────────────────────────────────────────
 function ckBP(el,aid){
-  const v=el.value.trim(), al=g(aid);
-  if(!v||!v.includes('/')){ al.classList.remove('show'); return; }
-  const sys=parseInt(v), dia=parseInt(v.split('/')[1]);
+  const v=el.value.trim(),al=g(aid);
+  if(!v||!v.includes('/')){al.classList.remove('show');return;}
+  const sys=parseInt(v),dia=parseInt(v.split('/')[1]);
   let m='';
-  if(sys>=180||dia>=110)      m='AMARAN: Hipertensi Teruk ≥180/110 mmHg — laporkan kepada doktor segera!';
-  else if(sys<90||dia<60)     m='AMARAN: Hipotensi — B/P rendah (<90/60). Pantau rapi.';
-  else if(sys>=140||dia>=90)  m='PERHATIAN: B/P tinggi ≥140/90 mmHg.';
-  if(m){ al.classList.add('show'); al.querySelectorAll('span')[1].textContent=m; }
+  if(sys>=180||dia>=110)     m='AMARAN: Hipertensi Teruk ≥180/110 mmHg — laporkan kepada doktor segera!';
+  else if(sys<90||dia<60)    m='AMARAN: Hipotensi — B/P rendah (<90/60). Pantau rapi.';
+  else if(sys>=140||dia>=90) m='PERHATIAN: B/P tinggi ≥140/90 mmHg.';
+  if(m){al.classList.add('show');al.querySelectorAll('span')[1].textContent=m;}
   else al.classList.remove('show');
 }
-
 function ckHR(el,aid){
-  const v=parseInt(el.value), al=g(aid);
-  if(!v){ al.classList.remove('show'); return; }
+  const v=parseInt(el.value),al=g(aid);
+  if(!v){al.classList.remove('show');return;}
   let m='';
-  if(v>120)      m='AMARAN: Takikardia Teruk — nadi >'+v+'/min.';
-  else if(v>100) m='PERHATIAN: Takikardia — nadi '+v+'/min.';
-  else if(v<50)  m='AMARAN: Bradikardia — nadi '+v+'/min.';
-  if(m){ al.classList.add('show'); al.querySelectorAll('span')[1].textContent=m; }
+  if(v>120)     m='AMARAN: Takikardia Teruk — nadi >'+v+'/min.';
+  else if(v>100)m='PERHATIAN: Takikardia — nadi '+v+'/min.';
+  else if(v<50) m='AMARAN: Bradikardia — nadi '+v+'/min.';
+  if(m){al.classList.add('show');al.querySelectorAll('span')[1].textContent=m;}
   else al.classList.remove('show');
 }
-
 function ckSpo2(el,aid){
-  const v=parseInt(el.value), al=g(aid);
-  if(!v){ al.classList.remove('show'); return; }
+  const v=parseInt(el.value),al=g(aid);
+  if(!v){al.classList.remove('show');return;}
   let m='';
   if(v<90)      m='AMARAN KRITIKAL: SpO₂ '+v+'% — sangat rendah!';
   else if(v<94) m='AMARAN: SpO₂ rendah ('+v+'%). Semak pernafasan pesakit.';
-  if(m){ al.classList.add('show'); al.querySelectorAll('span')[1].textContent=m; }
+  if(m){al.classList.add('show');al.querySelectorAll('span')[1].textContent=m;}
   else al.classList.remove('show');
 }
 
-// ─── CALCULATIONS ────────────────────────────────────────────────
+// ─── CALCULATIONS ─────────────────────────────────────────────
 function calcIDW(){
-  const pre=parseFloat(gv('pre-wt')), dry=parseFloat(gv('dry-wt'));
+  const pre=parseFloat(gv('pre-wt')),dry=parseFloat(gv('dry-wt'));
   g('pre-idw').value=(!isNaN(pre)&&!isNaN(dry))?(pre-dry).toFixed(1)+' kg':'';
 }
-
 function calcPost(){
-  const pre=parseFloat(gv('pre-wt')), post=parseFloat(gv('post-wt')), dry=parseFloat(gv('dry-wt'));
+  const pre=parseFloat(gv('pre-wt')),post=parseFloat(gv('post-wt')),dry=parseFloat(gv('dry-wt'));
   if(!isNaN(pre)&&!isNaN(post)){
     const tfr=(pre-post).toFixed(1);
     g('post-tfr').value=tfr+' kg';
@@ -477,16 +522,17 @@ function calcPost(){
       g('disp-idwb').textContent=ib;
     }
   }
+  g('disp-bvp').textContent=gv('post-bvp')||'—';
 }
 
-// ─── INTRADIALYTIC ───────────────────────────────────────────────
+// ─── INTRADIALYTIC ────────────────────────────────────────────
 function addIntraRow(){
   ic++;
   const i=ic;
   const now=new Date();
   const t=now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');
   const div=document.createElement('div');
-  div.className='intra-card'; div.id='ir-'+i;
+  div.className='intra-card';div.id='ir-'+i;
   div.innerHTML=`
     <div class="intra-hd">
       <span class="intra-hd-lbl">⏱ Bacaan ke-${i} (Jam ${i*2})</span>
@@ -505,141 +551,100 @@ function addIntraRow(){
     </div>`;
   g('intra-rows').appendChild(div);
 }
-function delIntraRow(i){ const el=g('ir-'+i); if(el) el.remove(); }
+function delIntraRow(i){const el=g('ir-'+i);if(el)el.remove();}
 
-// ─── MEDICATION ──────────────────────────────────────────────────
+// ─── MEDICATION — simplified ──────────────────────────────────
 const FIXED_MEDS=[
-  {id:'med-recormon',  name:'IV Recormon',  type:'standard', note:'Erythropoietin'},
-  {id:'med-calcitriol',name:'IV Calcitriol', type:'standard', note:'Vitamin D3 aktif'},
-  {id:'med-iron',      name:'IV Iron',       type:'prn',      note:'PRN — berikan jika perlu'},
-  {id:'med-blank1',    name:'',             type:'blank',    note:''},
-  {id:'med-blank2',    name:'',             type:'blank',    note:''},
+  {id:'med-recormon',  name:'IV Recormon',  type:'standard'},
+  {id:'med-calcitriol',name:'IV Calcitriol',type:'standard'},
+  {id:'med-iron',      name:'IV Iron',      type:'prn'},
+  {id:'med-blank1',    name:'',             type:'blank'},
+  {id:'med-blank2',    name:'',             type:'blank'},
 ];
 
 function buildMedList(){
-  const c=g('med-list'); c.innerHTML='';
-  FIXED_MEDS.forEach(m=>c.appendChild(createMedCard(m.id,m.name,m.type,m.note,false)));
+  const c=g('med-list');c.innerHTML='';
+  FIXED_MEDS.forEach(m=>c.appendChild(createMedCard(m.id,m.name,m.type,false)));
 }
 
-function createMedCard(id,name,type,note,removable){
+function createMedCard(id,name,type,removable){
   const div=document.createElement('div');
-  div.className='med-item'; div.id=id;
-  const bLbl = type==='prn'?'PRN':type==='tambahan'||type==='blank'?'Ubat':'Standard';
-  const bCls = type==='prn'?'prn':type==='tambahan'||type==='blank'?'tambahan':'standard';
-  const isBlank=(type==='blank'||type==='tambahan');
+  div.className='med-item';div.id=id;
+  const bLbl=type==='prn'?'PRN':type==='blank'||type==='tambahan'?'Ubat Lain':'Standard';
+  const bCls=type==='prn'?'prn':type==='blank'||type==='tambahan'?'tambahan':'standard';
+  const isBlank=type==='blank'||type==='tambahan';
   div.innerHTML=`
-    <div class="med-top">
+    <div class="med-row">
       ${isBlank
-        ?`<div class="med-name"><input id="${id}-name" type="text" placeholder="Nama ubat..." style="font-size:13px;font-weight:600;border:none;background:transparent;color:var(--text);padding:0;width:100%;outline:none"/></div>`
-        :`<div class="med-name">${name}</div>`}
+        ?`<input class="med-name-input" id="${id}-name" type="text" placeholder="Nama ubat..."/>`
+        :`<span class="med-name-fixed">${name}</span>`}
       <span class="med-badge ${bCls}">${bLbl}</span>
-      <div class="med-toggle">
-        <button id="${id}-yes" onclick="toggleMed('${id}','Ya')">Beri ✓</button>
-        <button id="${id}-no"  onclick="toggleMed('${id}','Tidak')" class="active-no">Tidak</button>
-      </div>
       ${removable?`<button class="med-del" onclick="delMedRow('${id}')">✕</button>`:''}
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px">
-      <div class="field">
+    <div class="med-fields-row">
+      <div class="med-dos-wrap field">
         <label>Dos / Kuantiti</label>
-        <input id="${id}-dos" type="text" placeholder="cth: 4000IU, 1mcg"/>
+        <input id="${id}-dos" type="text" placeholder="cth: 4000IU, 1mcg, 100mg"/>
       </div>
-      <div class="field">
-        <label>Laluan (Route)</label>
-        <select id="${id}-route" style="height:40px;padding:0 10px;border:1px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);font-size:14px;-webkit-appearance:none">
-          <option>IV (Intravena)</option>
-          <option>SC (Subkutaneus)</option>
-          <option>IM (Intramuskular)</option>
-          <option>PO (Oral)</option>
-        </select>
-      </div>
-    </div>
-    <div id="${id}-extra" style="display:none;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px">
-      <div class="field"><label>Masa diberikan</label><input id="${id}-masa" type="time"/></div>
-      <div class="field"><label>Catatan</label><input id="${id}-nota" type="text" placeholder="..."/></div>
-    </div>
-    ${note?`<div class="med-note" style="margin-top:5px">${note}</div>`:''}`;
+      <span class="med-iv-badge">IV</span>
+    </div>`;
   return div;
 }
 
-function toggleMed(id,val){
-  const card=g(id), extra=g(id+'-extra');
-  const btnY=g(id+'-yes'), btnN=g(id+'-no');
-  if(val==='Ya'){
-    card.className='med-item given';
-    btnY.className='active-yes'; btnN.className='';
-    if(extra) extra.style.display='grid';
-    const masaEl=g(id+'-masa');
-    if(masaEl&&!masaEl.value){
-      const now=new Date();
-      masaEl.value=now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');
-    }
-  } else {
-    card.className='med-item not-given';
-    btnY.className=''; btnN.className='active-no';
-    if(extra) extra.style.display='none';
-  }
+function addMedRow(){
+  mc++;
+  const id='med-custom-'+mc;
+  g('med-list').appendChild(createMedCard(id,'','tambahan',true));
 }
-
-function addMedRow(){ mc++; const id='med-custom-'+mc; g('med-list').appendChild(createMedCard(id,'','tambahan','',true)); }
-function delMedRow(id){ const el=g(id); if(el) el.remove(); }
+function delMedRow(id){const el=g(id);if(el)el.remove();}
 
 function getMedPayload(){
   const result=[];
   g('med-list').querySelectorAll('.med-item').forEach(card=>{
     const id=card.id;
-    const given=g(id+'-yes')&&g(id+'-yes').className.includes('active-yes');
     const fixedM=FIXED_MEDS.find(m=>m.id===id);
     const nameEl=g(id+'-name');
     const name=fixedM?fixedM.name:(nameEl?nameEl.value.trim():'');
-    if(!name&&!given) return;
+    const dos=gv(id+'-dos');
+    if(!name&&!dos) return;
     result.push({
       nama: name||'(ubat tidak dinamakan)',
-      status: given?'Diberikan':'Tidak diberikan',
-      dos:   gv(id+'-dos'),
-      masa:  given?gv(id+'-masa'):'',
-      route: g(id+'-route')?g(id+'-route').value:'',
-      nota:  given?gv(id+'-nota'):'',
+      dos:  dos||'—',
+      laluan:'IV (Intravena)',
     });
   });
   return result;
 }
 
-// ─── SUMMARY ─────────────────────────────────────────────────────
+// ─── SUMMARY ──────────────────────────────────────────────────
 function updSummary(){
-  // Vital table
-  g('s-tv1-bp').textContent   = gv('tv1-bp')||'—';
-  g('s-tv1-hr').textContent   = gv('tv1-hr')||'—';
-  g('s-tv1-tmp').textContent  = gv('tv1-tmp')||'—';
-  g('s-tv1-spo2').textContent = gv('tv1-spo2')||'—';
-  g('s-tv2-bp').textContent   = gv('tv2-bp')||'—';
-  g('s-tv2-hr').textContent   = gv('tv2-hr')||'—';
-  g('s-tv2-tmp').textContent  = gv('tv2-tmp')||'—';
-  g('s-tv2-spo2').textContent = gv('tv2-spo2')||'—';
-  g('s-post-bp').textContent  = gv('post-bp')||'—';
-  g('s-post-hr').textContent  = gv('post-hr')||'—';
-  g('s-post-tmp').textContent = gv('post-tmp')||'—';
-  g('s-post-spo2').textContent= gv('post-spo2')||'—';
-  const pr=parseFloat(gv('pre-wt')), po=parseFloat(gv('post-wt'));
+  g('s-tv1-bp').textContent   =gv('tv1-bp')||'—';
+  g('s-tv1-hr').textContent   =gv('tv1-hr')||'—';
+  g('s-tv1-tmp').textContent  =gv('tv1-tmp')||'—';
+  g('s-tv1-spo2').textContent =gv('tv1-spo2')||'—';
+  g('s-tv2-bp').textContent   =gv('tv2-bp')||'—';
+  g('s-tv2-hr').textContent   =gv('tv2-hr')||'—';
+  g('s-tv2-tmp').textContent  =gv('tv2-tmp')||'—';
+  g('s-tv2-spo2').textContent =gv('tv2-spo2')||'—';
+  g('s-post-bp').textContent  =gv('post-bp')||'—';
+  g('s-post-hr').textContent  =gv('post-hr')||'—';
+  g('s-post-tmp').textContent =gv('post-tmp')||'—';
+  g('s-post-spo2').textContent=gv('post-spo2')||'—';
+  const pr=parseFloat(gv('pre-wt')),po=parseFloat(gv('post-wt'));
   g('s-tfr').textContent=(!isNaN(pr)&&!isNaN(po))?(pr-po).toFixed(1):'—';
   g('s-idwb').textContent=gv('post-idw').replace(' kg','')||'—';
+  g('s-bvp').textContent=gv('post-bvp')||'—';
 
-  // Medication table
   const meds=getMedPayload();
   g('s-med-tbl').innerHTML=meds.length
-    ?`<table class="sum-table"><thead><tr><th>Ubat</th><th>Status</th><th>Dos</th><th>Masa</th><th>Laluan</th></tr></thead><tbody>${
-      meds.map(m=>`<tr>
-        <td style="font-weight:500">${m.nama}</td>
-        <td><span style="padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500;background:${m.status==='Diberikan'?'var(--teal-lt)':'var(--gray-lt)'};color:${m.status==='Diberikan'?'var(--teal)':'var(--text3)'}">${m.status}</span></td>
-        <td>${m.dos||'—'}</td><td>${m.masa||'—'}</td><td>${m.route||'—'}</td>
-      </tr>`).join('')
+    ?`<table class="sum-table"><thead><tr><th>Ubat</th><th>Dos</th><th>Laluan</th></tr></thead><tbody>${
+      meds.map(m=>`<tr><td style="font-weight:500">${m.nama}</td><td>${m.dos}</td><td>${m.laluan}</td></tr>`).join('')
     }</tbody></table>`
     :'<p style="font-size:12px;color:var(--text3);padding:4px 0">Tiada rekod ubatan.</p>';
 
-  // Intra table
   let rows='';
   for(let i=1;i<=ic;i++){
-    if(!g('ir-'+i)) continue;
+    if(!g('ir-'+i))continue;
     const gf=f=>gv('it-'+f+'-'+i)||'—';
     rows+=`<tr><td>${gf('t')}</td><td>${gf('bp')}</td><td>${gf('hr')}</td><td>${gf('tmp')}</td><td>${gf('qb')}</td><td>${gf('vp')}</td><td>${gf('tfr')}</td></tr>`;
   }
@@ -648,67 +653,70 @@ function updSummary(){
     :'<p style="font-size:12px;color:var(--text3);padding:4px 0">Tiada bacaan intradialitik.</p>';
 }
 
-// ─── PAYLOAD ─────────────────────────────────────────────────────
+// ─── PAYLOAD ──────────────────────────────────────────────────
 function getPayload(){
   let intraArr=[];
   for(let i=1;i<=ic;i++){
-    if(!g('ir-'+i)) continue;
+    if(!g('ir-'+i))continue;
     const gf=f=>gv('it-'+f+'-'+i);
     intraArr.push({masa:gf('t'),bp:gf('bp'),hr:gf('hr'),tmp:gf('tmp'),qb:gf('qb'),hep:gf('hep'),vp:gf('vp'),tfr:gf('tfr'),tmp2:gf('tmp2')});
   }
+  const reuseN = dUse==='reuse'?gv('rx-reuse-n'):'';
   return{
-    timestamp:  new Date().toISOString(),
-    hospital:   'Hospital Tambunan',
-    unit:       'Unit Hemodialisis',
-    tarikh:     gv('p-date'),
-    masa_mula:  gv('p-tstart'),
-    masa_tamat: gv('p-tend'),
-    nama:       gv('p-name'),
-    no_pesakit: gv('p-id'),
-    syif:       gv('p-shift'),
-    staff_mula: gv('s-start'),
-    staff_tamat:gv('s-end'),
-    berat_kering:gv('dry-wt'),
-    dialyser:   gv('rx-dial'),
-    preskripsi: `Td:${gv('rx-td')}min Qb:${gv('rx-qb')} Qd:${gv('rx-qd')} UF:${gv('rx-uf')}L HepL:${gv('rx-hep-l')} HepH:${gv('rx-hep-h')}`,
-    penampilan: gv('pre-ga'),
-    fistula:    gv('pre-fist'),
-    penilaian:  `Cecair:${rv('fl')} Sesak:${rv('dy')} Edema:${rv('oe')} Radang:${rv('in')} Hematoma:${rv('hm')} Thrill:${rv('th')} Usaha:${rv('ef')}`,
-    // Tanda vital pertama
-    bp_pertama:   gv('tv1-bp'),
-    hr_pertama:   gv('tv1-hr'),
-    tmp_pertama:  gv('tv1-tmp'),
-    spo2_pertama: gv('tv1-spo2'),
-    ps_pertama:   gv('tv1-ps'),
-    idw:          gv('pre-idw'),
-    wt_pre:       gv('pre-wt'),
-    bp_pertama_st:gv('tv1-bp-st'),
-    // Tanda vital baseline
-    bp_baseline:  gv('tv2-bp'),
-    hr_baseline:  gv('tv2-hr'),
-    tmp_baseline: gv('tv2-tmp'),
-    spo2_baseline:gv('tv2-spo2'),
-    ps_baseline:  gv('tv2-ps'),
-    vp_baseline:  gv('tv2-vp'),
-    qb_baseline:  gv('tv2-qb'),
+    timestamp:    new Date().toISOString(),
+    hospital:     'Hospital Tambunan',
+    unit:         'Unit Hemodialisis',
+    tarikh:       gv('p-date'),
+    masa_mula:    gv('p-tstart'),
+    masa_tamat:   gv('p-tend'),
+    nama:         gv('p-name'),
+    no_pesakit:   gv('p-id'),
+    syif:         gv('p-shift'),
+    staff_mula:   gv('s-start'),
+    staff_tamat:  gv('s-end'),
+    berat_kering: gv('dry-wt'),
+    dialyser:     gv('rx-dial'),
+    dialyser_use: dUse==='first'?'First Use':('Reuse'+(reuseN?' (kali ke-'+reuseN+')','')),
+    rdt_reprocessed: RDT.repr||'—',
+    rdt_pre_priming: RDT.pre||'—',
+    rdt_post_priming:RDT.post||'—',
+    preskripsi:   `Td:${gv('rx-td')}min Qb:${gv('rx-qb')} Qd:${gv('rx-qd')} UF:${gv('rx-uf')}L HepL:${gv('rx-hep-l')} HepH:${gv('rx-hep-h')}`,
+    penampilan:   gv('pre-ga'),
+    fistula:      gv('pre-fist'),
+    penilaian:    `Cecair:${rv('fl')} Sesak:${rv('dy')} Edema:${rv('oe')} Radang:${rv('in')} Hematoma:${rv('hm')} Thrill:${rv('th')} Usaha:${rv('ef')}`,
+    bp_pertama:    gv('tv1-bp'),
+    hr_pertama:    gv('tv1-hr'),
+    tmp_pertama:   gv('tv1-tmp'),
+    spo2_pertama:  gv('tv1-spo2'),
+    ps_pertama:    gv('tv1-ps'),
+    idw:           gv('pre-idw'),
+    wt_pre:        gv('pre-wt'),
+    bp_pertama_st: gv('tv1-bp-st'),
+    bp_baseline:   gv('tv2-bp'),
+    hr_baseline:   gv('tv2-hr'),
+    tmp_baseline:  gv('tv2-tmp'),
+    spo2_baseline: gv('tv2-spo2'),
+    ps_baseline:   gv('tv2-ps'),
+    vp_baseline:   gv('tv2-vp'),
+    qb_baseline:   gv('tv2-qb'),
     bp_baseline_st:gv('tv2-bp-st'),
-    // Post HD
-    bp_post:    gv('post-bp'),
-    hr_post:    gv('post-hr'),
-    wt_post:    gv('post-wt'),
-    tmp_post:   gv('post-tmp'),
-    spo2_post:  gv('post-spo2'),
-    ps_post:    gv('post-ps'),
-    tfr:        gv('post-tfr'),
-    idw_baki:   gv('post-idw'),
-    ubatan:     JSON.stringify(getMedPayload()),
-    data_intra: JSON.stringify(intraArr),
+    bp_post:       gv('post-bp'),
+    hr_post:       gv('post-hr'),
+    wt_post:       gv('post-wt'),
+    tmp_post:      gv('post-tmp'),
+    spo2_post:     gv('post-spo2'),
+    ps_post:       gv('post-ps'),
+    tfr:           gv('post-tfr'),
+    idw_baki:      gv('post-idw'),
+    bvp:           gv('post-bvp'),
+    ubatan:        JSON.stringify(getMedPayload()),
+    data_intra:    JSON.stringify(intraArr),
   };
 }
 
-// ─── SEND TO SHEETS ───────────────────────────────────────────────
+// ─── SEND TO SHEETS ───────────────────────────────────────────
 async function sendSheets(){
-  if(!gv('p-name')){ showToast('err','⚠ Sila isi nama pesakit sebelum menghantar data.'); return; }
+  if(!gv('p-name')){showToast('err','⚠ Sila isi nama pesakit sebelum menghantar data.');return;}
   showToast('info','📤 Menghantar data ke Google Sheets...');
   try{
     await fetch(GAS_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(getPayload()),mode:'no-cors'});
@@ -718,48 +726,46 @@ async function sendSheets(){
   }
 }
 
-// ─── CSV EXPORT ───────────────────────────────────────────────────
+// ─── CSV EXPORT ───────────────────────────────────────────────
 function exportCSV(){
   const p=getPayload();
   const keys=Object.keys(p).filter(k=>k!=='data_intra'&&k!=='ubatan');
   const row=keys.map(k=>'"'+String(p[k]||'').replace(/"/g,'""')+'"').join(',');
-  const csv=keys.join(',')+'\n'+row;
   const a=document.createElement('a');
-  a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);
+  a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(keys.join(',')+'\n'+row);
   a.download='HD_'+(gv('p-name')||'pesakit')+'_'+(gv('p-date')||new Date().toISOString().slice(0,10))+'.csv';
   a.click();
   showToast('ok','📥 Fail CSV dimuat turun.');
 }
 
-// ─── TOAST ───────────────────────────────────────────────────────
+// ─── TOAST ────────────────────────────────────────────────────
 let toastTimer;
 function showToast(type,msg){
   const el=g('toast');
   el.className='toast toast-'+type+' show';
   el.textContent=msg;
   clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>{ el.className='toast'; },4000);
+  toastTimer=setTimeout(()=>{el.className='toast';},4000);
 }
 
-// ─── CLEAR ALL ───────────────────────────────────────────────────
+// ─── CLEAR ALL ────────────────────────────────────────────────
 function clearAll(){
-  if(!confirm('Kosongkan semua data rekod ini?')) return;
+  if(!confirm('Kosongkan semua data rekod ini?'))return;
   document.querySelectorAll('input').forEach(el=>el.value='');
-  g('intra-rows').innerHTML=''; ic=0;
+  g('intra-rows').innerHTML='';ic=0;
   buildMedList();
   buildAssessment();
+  setUse('first');
+  RDT.repr='';RDT.pre='';RDT.post='';
+  ['rdt-repr-yes','rdt-repr-no','rdt-pre-yes','rdt-pre-no','rdt-post-yes','rdt-post-no'].forEach(id=>g(id).className='yn-btn');
   goPage('pre');
   showToast('ok','🗑 Semua data rekod telah dikosongkan.');
 }
 
-// ─── OFFLINE ─────────────────────────────────────────────────────
 window.addEventListener('online', ()=>g('offline-bar').classList.remove('show'));
 window.addEventListener('offline',()=>g('offline-bar').classList.add('show'));
-
-// ─── SERVICE WORKER ───────────────────────────────────────────────
 if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(()=>{});
 
-// ─── INIT ────────────────────────────────────────────────────────
 buildAssessment();
 buildMedList();
 addIntraRow();
